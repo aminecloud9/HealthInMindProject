@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentPadding="10dp"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/cardview_light_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/medicine_name"
+            android:layout_width="291dp"
+            android:layout_height="41dp"
+            android:layout_alignLeft="@+id/medicine_frequency"
+            android:layout_alignTop="@+id/medicines_medicine_image"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="-7dp"
+            android:layout_toEndOf="@+id/medicines_medicine_image"
+            android:layout_toRightOf="@+id/medicines_medicine_image"
+            android:text="Paracetamol"
+            android:gravity="bottom"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_view_top_left_item"
+            android:layout_alignStart="@+id/medicine_frequency" />
+
+        <TextView
+            android:id="@+id/medicine_frequency"
+            android:layout_width="150dp"
+            android:layout_height="49dp"
+            android:layout_below="@+id/medicine_name"
+            android:layout_alignBottom="@+id/medicines_medicine_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-31dp"
+            android:layout_marginRight="-31dp"
+            android:layout_toStartOf="@+id/medicine_added_by"
+            android:layout_toLeftOf="@+id/medicine_added_by"
+            android:layout_toEndOf="@+id/medicines_medicine_image"
+            android:layout_toRightOf="@+id/medicines_medicine_image"
+            android:gravity="top"
+            android:text="3 tabs/day"
+            android:textSize="@dimen/text_view_bottom_left_item" />
+
+
+        <TextView
+            android:id="@+id/medicine_added_by"
+            android:layout_width="164dp"
+            android:layout_height="166dp"
+            android:layout_alignTop="@+id/medicine_frequency"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/medicines_medicine_image"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:width="25dp"
+            android:gravity="right"
+            android:text="Added by You"
+            android:textSize="@dimen/text_view_bottom_right_item" />
+
+        <TextView
+            android:id="@+id/medicine_dosage"
+            android:layout_width="64dp"
+            android:layout_height="166dp"
+            android:layout_alignTop="@+id/medicines_medicine_image"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/medicine_name"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:width="25dp"
+            android:gravity="bottom"
+            android:text="250 mg"
+            android:textSize="@dimen/text_view_bottom_right_item" />
+
+        <ImageView
+            android:id="@+id/medicines_medicine_image"
+            android:background="@color/colorPaletteGreen"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

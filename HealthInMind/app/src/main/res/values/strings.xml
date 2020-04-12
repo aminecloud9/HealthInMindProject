@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Health In Mind</string>
+    <string name="health_in_mind">Health in mind</string>
+    <string name="track_your_health_and_be_healthy">Track your health and be healthy</string>
+    <string name="dosage">Dosage</string>
+    <string name="form">Form</string>
+    <string name="frequency">Frequency</string>
+    <string name="reminder">Reminder</string>
+    <string name="refill_quantity">Refill Quantity</string>
+    <string name="medicine_start_date">Medecine Start Date</string>
+    <string name="medicine_has_no_end_date">Medecine has no end date</string>
+    <string name="medicine_end_date">Medecine End Date</string>
+    <string name="medicine_instructions">Medicine Instructions</string>
+    <string name="medicine_name">Name</string>
+    <string name="refill_reminder">Refill Reminder</string>
+    <string name="added_medicine_name">Medicine Name</string>
+    <string name="added_medicine_dosage">Dosage-eg.250 mg</string>
+    <string name="today_s_medicines">Today\'s Medicines</string>
+    <string name="upcoming_appointments">Upcoming Appointments</string>
+</resources>
