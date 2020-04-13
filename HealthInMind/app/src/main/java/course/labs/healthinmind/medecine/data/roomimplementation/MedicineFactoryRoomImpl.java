@@ -1,10 +1,12 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.data.roomimplementation;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
 import course.labs.healthinmind.reminders.ReminderRoomImpl;
 
 public class MedicineFactoryRoomImpl implements MedicineFactory {

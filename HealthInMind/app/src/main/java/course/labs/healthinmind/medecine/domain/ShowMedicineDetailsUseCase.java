@@ -1,4 +1,7 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.domain;
+
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.data.abstractions.MedicineRepository;
 
 public class ShowMedicineDetailsUseCase {
     private MedicineRepository repository;

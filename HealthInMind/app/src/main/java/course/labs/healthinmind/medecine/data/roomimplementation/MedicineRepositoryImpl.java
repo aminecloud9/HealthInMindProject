@@ -1,8 +1,12 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.data.roomimplementation;
 
 import java.util.List;
 
-public class MedicineRepositoryImpl implements MedicineRepository{
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.data.abstractions.MedicineRepository;
+import course.labs.healthinmind.medecine.data.abstractions.MedicinesLocalProvider;
+
+public class MedicineRepositoryImpl implements MedicineRepository {
     private MedicinesLocalProvider medicinesLocalProvider;
 
     public MedicineRepositoryImpl(MedicinesLocalProvider medicinesLocalProvider) {

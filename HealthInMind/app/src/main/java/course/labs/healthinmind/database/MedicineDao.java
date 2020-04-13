@@ -1,16 +1,14 @@
 package course.labs.healthinmind.database;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
 
-import course.labs.healthinmind.medecine.Medicine;
-import course.labs.healthinmind.medecine.MedicineImpl;
-import course.labs.healthinmind.medecine.MedicineRoomImpl;
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineImpl;
 
 @Dao
 public interface MedicineDao {

@@ -1,14 +1,15 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.data.roomimplementation;
 
 import android.app.Application;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import course.labs.healthinmind.database.HealthData;
 import course.labs.healthinmind.database.MedicineDao;
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.data.abstractions.MedicinesLocalProvider;
 
-public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider{
+public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
 
 
     private MedicineDao medicineDao;

@@ -1,4 +1,4 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.data.roomimplementation;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

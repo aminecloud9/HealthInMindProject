@@ -10,12 +10,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.time.LocalTime;
-import java.util.Date;
-
-import course.labs.healthinmind.medecine.MedicineRoomImpl;
-import course.labs.healthinmind.reminders.Reminder;
-
 public abstract class HealthData extends RoomDatabase {
     private static HealthData instance;
     public abstract MedicineDao medicineDao();
