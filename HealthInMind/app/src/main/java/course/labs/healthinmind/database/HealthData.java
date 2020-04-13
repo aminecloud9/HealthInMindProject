@@ -14,6 +14,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineDao;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
+import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
 @Database(entities = {MedicineRoomImpl.class, MedicineReminderCrossRef.class, ReminderRoomImpl.class}, version = 1)
@@ -21,6 +22,7 @@ import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomIm
 public abstract class HealthData extends RoomDatabase {
     private static HealthData instance;
     public abstract MedicineDao medicineDao();
+    public abstract ReminderDao reminderDao();
     //the getter of instances from our room Db
     public static synchronized HealthData getInstance(Context context){
         if (instance == null){

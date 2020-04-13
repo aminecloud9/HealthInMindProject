@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 
-@Entity
+@Entity(tableName = "reminders")
 public class ReminderRoomImpl implements Reminder {
     @PrimaryKey(autoGenerate = true)
     private long reminderId;
