@@ -1,4 +1,4 @@
-package course.labs.healthinmind.reminders;
+package course.labs.healthinmind.reminders.data.abstractions;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

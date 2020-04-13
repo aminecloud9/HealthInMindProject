@@ -11,7 +11,7 @@ import java.util.List;
 
 import course.labs.healthinmind.database.MedicineReminderCrossRef;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
-import course.labs.healthinmind.reminders.ReminderRoomImpl;
+import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
 public class MedicineImpl implements Medicine {
 
@@ -23,8 +23,8 @@ public class MedicineImpl implements Medicine {
     @Embedded
     public MedicineRoomImpl medicine;
     @Relation(
-            parentColumn = "playlistId",
-            entityColumn = "songId",
+            parentColumn = "medicineId",
+            entityColumn = "reminderId",
             associateBy = @Junction(MedicineReminderCrossRef.class)
     )
     public List<ReminderRoomImpl> reminders;

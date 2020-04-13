@@ -1,25 +1,27 @@
-package course.labs.healthinmind.database;
+package course.labs.healthinmind.medecine.data.roomimplementation;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import java.util.List;
 
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineImpl;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 
 @Dao
 public interface MedicineDao {
     @Insert
-    void insert(MedicineImpl medicineRoomImpl);
+    long insert(MedicineRoomImpl medicineRoomImpl);
 
     @Update
-    void update(MedicineImpl medicineRoomImpl);
+    void update(MedicineRoomImpl medicineRoomImpl);
 
     @Query("SELECT * FROM medicine_table WHERE medicineId = :medicineId")
-    Medicine fetchById(int medicineId);
+    MedicineRoomImpl fetchById(long medicineId);
 
     @Query("DELETE FROM medicine_table WHERE medicineId = :id")
     void deleteMedicineRoom(int id);
@@ -28,12 +30,13 @@ public interface MedicineDao {
     void deleteAllMedicines();
 
     @Query("SELECT * FROM medicine_table ORDER By frequency DESC")
-    List<Medicine> getAllMedicines();
+    List<MedicineRoomImpl> getAllMedicines();
 
+    @Transaction
     @Query("SELECT * FROM medicine_table")
-    List<Medicine> fetchMedicinesWithReminders();
+    List<MedicineImpl> fetchMedicinesWithReminders();
 
     @Query("SELECT * FROM medicine_table WHERE medicineId = :medicineId")
-    Medicine fetchMedicineWithItsReminders(int medicineId);
+    MedicineImpl fetchMedicineWithItsReminders(int medicineId);
 
 }

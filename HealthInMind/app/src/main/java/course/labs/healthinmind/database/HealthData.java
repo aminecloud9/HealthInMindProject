@@ -6,10 +6,18 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineDao;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
+import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
+
+@Database(entities = {MedicineRoomImpl.class, MedicineReminderCrossRef.class, ReminderRoomImpl.class}, version = 1)
+@TypeConverters({Converters.class})
 public abstract class HealthData extends RoomDatabase {
     private static HealthData instance;
     public abstract MedicineDao medicineDao();

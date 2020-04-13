@@ -5,7 +5,6 @@ import android.app.Application;
 import java.util.List;
 
 import course.labs.healthinmind.database.HealthData;
-import course.labs.healthinmind.database.MedicineDao;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.data.abstractions.MedicinesLocalProvider;
 
@@ -25,14 +24,14 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
 
     @Override
     public Medicine createMedicine(Medicine medicine) {
-        medicineDao.insert((MedicineImpl) medicine);
-        return medicine;
+        //TODO implement
+        return null;
     }
 
     @Override
     public Medicine updateMedicine(Medicine medicine) {
-        medicineDao.update((MedicineImpl) medicine);
-        return medicine;
+        //TODO implement
+        return null;
     }
 
     @Override
@@ -42,6 +41,7 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
 
     @Override
     public List<Medicine> showExistantMedicines() {
-        return medicineDao.getAllMedicines();
+        //TODO implement
+        return null;
     }
 }

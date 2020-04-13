@@ -7,17 +7,17 @@ import java.util.List;
 public interface MedicineFactory {
 
     Medicine createMedicineThatEnds(
-      String name,
-      int dosage,
-      String form,
-      int frequency,
-      int refillQuantity,
-      boolean toBeRemindedToRefill,
-      Date startingDate,
-      Date endingDate,
-      double quantityToTake,
-      String instructions,
-      List<LocalTime> takingTimes
+            String name,
+            int dosage,
+            String form,
+            int frequency,
+            int refillQuantity,
+            boolean toBeRemindedToRefill,
+            Date startingDate,
+            Date endingDate,
+            double quantityToTake,
+            String instructions,
+            List<LocalTime> takingTimes
     );
 
     Medicine createMedicineThatDoesNotEnd(
