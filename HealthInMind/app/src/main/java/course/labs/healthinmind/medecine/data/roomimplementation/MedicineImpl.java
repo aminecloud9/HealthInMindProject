@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import course.labs.healthinmind.database.MedicineReminderCrossRef;
+import course.labs.healthinmind.database.RemindMedicine;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
@@ -21,13 +21,13 @@ public class MedicineImpl implements Medicine {
     }
 
     @Embedded
-    public MedicineRoomImpl medicine;
+    public final MedicineRoomImpl medicine;
     @Relation(
             parentColumn = "medicineId",
             entityColumn = "reminderId",
-            associateBy = @Junction(MedicineReminderCrossRef.class)
+            associateBy = @Junction(RemindMedicine.class)
     )
-    public List<ReminderRoomImpl> reminders;
+    public final List<ReminderRoomImpl> reminders;
 
     @Override
     public String getMedicineName() {

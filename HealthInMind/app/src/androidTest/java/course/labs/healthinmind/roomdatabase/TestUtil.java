@@ -17,12 +17,14 @@ public class TestUtil {
             {
                 add(new ReminderRoomImpl(LocalTime.of(7,0)));
                 add(new ReminderRoomImpl(LocalTime.of(12,0)));
+                add(new ReminderRoomImpl(LocalTime.of(20,0)));
             }
         };
     }
 
     public static MedicineRoomImpl createMedicine(String name) throws ParseException {
-        return new MedicineRoomImpl(name,
+        return new MedicineRoomImpl(
+                name,
                 "form",
                 250,
                 2,

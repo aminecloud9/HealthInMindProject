@@ -9,7 +9,13 @@ import java.time.LocalTime;
 
 @Entity(primaryKeys = {"medicineId","reminderId"}, tableName = "remind_medicines")
 
-public class MedicineReminderCrossRef {
+public class RemindMedicine {
+
+    public RemindMedicine(long medicineId, long reminderId) {
+        this.medicineId = medicineId;
+        this.reminderId = reminderId;
+    }
+
     public long medicineId;
     public long reminderId;
 }

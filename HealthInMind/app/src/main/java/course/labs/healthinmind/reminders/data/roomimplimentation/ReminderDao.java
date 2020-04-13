@@ -2,6 +2,7 @@ package course.labs.healthinmind.reminders.data.roomimplimentation;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
@@ -15,7 +16,7 @@ public interface ReminderDao {
     long insert(ReminderRoomImpl reminder);
 
     @Transaction
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     List<Long> insertReminders(List<ReminderRoomImpl> reminders);
 
     @Query("SELECT * FROM reminders WHERE reminderId = :reminderId")
@@ -23,4 +24,7 @@ public interface ReminderDao {
 
     @Query("SELECT * FROM reminders WHERE time = :time")
     ReminderRoomImpl fetchByTime(LocalTime time);
+
+    @Query("SELECT * FROM reminders WHERE time in (:takingTimes)")
+    List<ReminderRoomImpl> fetchAllRemindersOf(List<LocalTime> takingTimes);
 }

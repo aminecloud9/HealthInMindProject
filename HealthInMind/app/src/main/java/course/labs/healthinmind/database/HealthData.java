@@ -17,12 +17,13 @@ import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImp
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
-@Database(entities = {MedicineRoomImpl.class, MedicineReminderCrossRef.class, ReminderRoomImpl.class}, version = 1)
+@Database(entities = {MedicineRoomImpl.class, RemindMedicine.class, ReminderRoomImpl.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class HealthData extends RoomDatabase {
     private static HealthData instance;
     public abstract MedicineDao medicineDao();
     public abstract ReminderDao reminderDao();
+    public abstract RemindMedicineDao remindMedicineDao();
     //the getter of instances from our room Db
     public static synchronized HealthData getInstance(Context context){
         if (instance == null){

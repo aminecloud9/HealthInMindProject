@@ -37,6 +37,6 @@ public interface MedicineDao {
     List<MedicineImpl> fetchMedicinesWithReminders();
 
     @Query("SELECT * FROM medicine_table WHERE medicineId = :medicineId")
-    MedicineImpl fetchMedicineWithItsReminders(int medicineId);
+    MedicineImpl fetchMedicineWithItsReminders(long medicineId);
 
 }

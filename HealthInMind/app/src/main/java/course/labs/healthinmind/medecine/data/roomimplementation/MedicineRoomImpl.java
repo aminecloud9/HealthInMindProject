@@ -30,24 +30,25 @@ public class MedicineRoomImpl{
     public MedicineRoomImpl(String medicineName, String form, int dosage, int frequency, int refillQuantity,
                              boolean refillReminder, Date startDate, boolean medicineHasNoEndDate,
                             Date endDate, String instructions, double quantityToTake) {
-        this.medicineName = medicineName;
-        this.form = form;
-        this.dosage = dosage;
-        this.frequency = frequency;
-        this.refillQuantity = refillQuantity;
-        this.refillReminder = refillReminder;
-        this.medicineHasNoEndDate = medicineHasNoEndDate;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.instructions = instructions;
-        this.quantityToTake = quantityToTake;
+        setProperties(
+                medicineName,
+                form,
+                dosage,
+                frequency,
+                refillQuantity,
+                refillReminder,
+                startDate,medicineHasNoEndDate,
+                endDate,
+                instructions,
+                quantityToTake
+        );
     }
 
     public MedicineRoomImpl(long medicineId, String medicineName, String form, int dosage, int frequency, int refillQuantity,
                             boolean refillReminder, Date startDate, boolean medicineHasNoEndDate,
                             Date endDate, String instructions, double quantityToTake) {
         this.medicineId = medicineId;
-         new MedicineRoomImpl(
+         setProperties(
                 medicineName,
                 form,
                 dosage,
@@ -59,6 +60,20 @@ public class MedicineRoomImpl{
                 instructions,
                 quantityToTake
                 );
+    }
+
+    private void setProperties(String medicineName, String form, int dosage, int frequency, int refillQuantity, boolean refillReminder, Date startDate, boolean medicineHasNoEndDate, Date endDate, String instructions, double quantityToTake) {
+        this.medicineName = medicineName;
+        this.form = form;
+        this.dosage = dosage;
+        this.frequency = frequency;
+        this.refillQuantity = refillQuantity;
+        this.refillReminder = refillReminder;
+        this.medicineHasNoEndDate = medicineHasNoEndDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.instructions = instructions;
+        this.quantityToTake = quantityToTake;
     }
 
     public long getMedicineId() {

@@ -19,7 +19,11 @@ public class MedicineFactoryRoomImpl implements MedicineFactory {
                 frequency,
                 refillQuantity,
                 toBeRemindedToRefill,
-                startingDate,false, endingDate,instructions,quantityToTake);
+                startingDate,
+                false,
+                endingDate,
+                instructions,
+                quantityToTake);
 
 
         List<ReminderRoomImpl> reminders = createReminders(takingTimes);

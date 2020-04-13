@@ -9,6 +9,7 @@ import course.labs.healthinmind.roomdatabase.TestUtil;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 
 public class MedicineRoomImplTest extends BaseRoomTest {
@@ -27,6 +28,7 @@ public class MedicineRoomImplTest extends BaseRoomTest {
             long insertedMedicineId = medicineDao.insert(paracetamol);
             MedicineRoomImpl createdMedicine = medicineDao.fetchById(insertedMedicineId);
             assertEquals(createdMedicine.getMedicineId(), insertedMedicineId);
+            assertNotNull(createdMedicine.getInstructions());
         }catch (Exception e){
             e.printStackTrace();
         }
