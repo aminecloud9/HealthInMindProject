@@ -35,7 +35,7 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
         reminderDao.insertReminders(onlyNewReminders);
         long createdMedicineId = createMedicineInfo(medicine);
         createRemindMedicine(createdMedicineId, onlyNewReminders);
-        return medicine;
+        return medicineDao.fetchMedicineWithItsReminders(createdMedicineId);
     }
 
     private List<ReminderRoomImpl> getNewRemindersOnly(List<ReminderRoomImpl> existingReminders) {
