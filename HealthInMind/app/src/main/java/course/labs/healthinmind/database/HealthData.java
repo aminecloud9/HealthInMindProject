@@ -43,8 +43,8 @@ public abstract class HealthData extends RoomDatabase {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected Void doInBackground(Void... voids) {
-            medicineDao.insert(new MedicineRoomImpl("paracetamol","oval",250,3,20,new Reminder(LocalTime.now()),false,
-                    new Date(22-02-2020),true,new Date(22-05-2020),"take it when needed"));
+//            medicineDao.insert(new MedicineRoomImpl("paracetamol","oval",250,3,20,new Reminder(LocalTime.now()),false,
+//                    new Date(22-02-2020),true,new Date(22-05-2020),"take it when needed"));
             return null;
         }
     }

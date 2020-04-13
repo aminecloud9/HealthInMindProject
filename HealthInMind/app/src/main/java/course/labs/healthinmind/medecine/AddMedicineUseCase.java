@@ -7,7 +7,7 @@ public class AddMedicineUseCase {
         this.repository = repository;
     }
 
-    public MedicineRoomImpl addMedicine(MedicineRoomImpl medicineRoomImpl){
-        return repository.createMedicine(medicineRoomImpl);
+    public Medicine addMedicine(Medicine medicine){
+        return repository.createMedicine(medicine);
     }
 }
