@@ -83,6 +83,12 @@ public class MedicineRoomDatabaseProviderTests extends BaseRoomTest {
         Long createdMedicineId = medicineProvider.createMedicine(medicineToBeCreated);
         List<ReminderRoomImpl> createdMedicineTimeReminders = reminderDao.fetchAllRemindersOf(medicineToBeCreatedReminders);
         Assert.assertEquals(medicineToBeCreatedReminders.size(),createdMedicineTimeReminders.size());
+        Medicine createdMedicine = medicineDao.fetchMedicineWithItsReminders(createdMedicineId);
+        Assert.assertEquals(medicineToBeCreatedReminders.size(),createdMedicine.getTakingTimes().size());
+
+        for (LocalTime takingTime : createdMedicine.getTakingTimes()){
+            Assert.assertTrue(medicineToBeCreatedReminders.contains(takingTime));
+        }
     }
 
     @Test
