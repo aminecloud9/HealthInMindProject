@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/added_medicine_name"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
     <EditText
@@ -20,16 +20,25 @@
         android:layout_below="@+id/medicine_name_edit_text_id_add_view"
         android:hint="@string/added_medicine_dosage"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dosage_edit_text_id_add_view"
+        android:hint="Quantity  To Take"
+        android:textColor="@color/black"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:id="@+id/quantity_to_take_edit_text_add_view"/>
 
     <EditText
         android:id="@+id/form_edit_text_id_add_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dosage_edit_text_id_add_view"
+        android:layout_below="@+id/quantity_to_take_edit_text_add_view"
         android:hint="@string/form"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
     <EditText
@@ -39,7 +48,7 @@
         android:hint="@string/frequency"
         android:layout_below="@+id/form_edit_text_id_add_view"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
 
@@ -50,7 +59,7 @@
         android:hint="@string/refill_quantity"
         android:layout_below="@+id/frequency_edit_text_id_add_view"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
     <TextView
@@ -61,7 +70,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         android:text="@string/refill_reminder"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
     <EditText
         android:id="@+id/medicine_start_date_edit_text_id_add_view"
@@ -70,7 +79,7 @@
         android:hint="@string/medicine_start_date"
         android:layout_below="@+id/refill_reminder_text_view_id_add_view"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
     <TextView
@@ -81,7 +90,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         android:text="@string/medicine_has_no_end_date"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
     <EditText
         android:id="@+id/medicine_end_date_edit_text_id_add_view"
@@ -90,7 +99,7 @@
         android:hint="@string/medicine_end_date"
         android:layout_below="@+id/medicine_has_no_end_date_text_view_id_add_view"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
     <EditText
@@ -100,7 +109,7 @@
         android:hint="@string/medicine_instructions"
         android:layout_below="@+id/medicine_end_date_edit_text_id_add_view"
         android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detai_size" />
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
     <Switch

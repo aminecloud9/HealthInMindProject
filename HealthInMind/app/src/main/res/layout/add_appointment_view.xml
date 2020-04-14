@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Appointment Type"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColor="@color/black"
+        android:id="@+id/et_appointment_type_add_view"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_appointment_type_add_view"
+        android:hint="Name"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:id="@+id/et_appointment_name_add_view"
+        android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Appointment Date"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_below="@+id/et_appointment_name_add_view"
+        android:id="@+id/et_appointment_date_add_view"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_appointment_time_add_view"
+        android:layout_below="@+id/et_appointment_date_add_view"
+        android:hint="Appointment Time"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:layout_marginTop="@dimen/margin_top"
+        android:id="@+id/et_appointment_location_add_view"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:textColor="@color/black"
+        android:layout_below="@+id/et_appointment_time_add_view"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reminder"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_below="@+id/et_appointment_location_add_view"
+        android:id="@+id/tv_appointment_reminder_add_view"
+        android:textSize="@dimen/text_view_edit_add_detail_size"
+        android:textColor="@color/black"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_appointment_location_add_view"
+        android:layout_alignTop="@+id/tv_appointment_reminder_add_view"
+        android:layout_alignParentRight="true"
+        android:theme="@style/SCBSwitch"
+        android:thumbTint="@color/colorPaletteBlue"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Reminder"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_below="@+id/tv_appointment_reminder_add_view"
+        android:id="@+id/et_appointment_reminder_add_view"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:textColor="@color/black"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:background="@drawable/button_form"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColor="@color/colorPaletteWhite"
+        android:layout_below="@+id/et_appointment_reminder_add_view"/>
+
+
+
+</RelativeLayout>
