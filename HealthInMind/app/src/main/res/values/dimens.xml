@@ -7,4 +7,6 @@
     <dimen name="text_view_top_right_item">18sp</dimen>
     <dimen name="text_view_bottom_left_item">15sp</dimen>
     <dimen name="text_view_bottom_right_item">15sp</dimen>
+    <dimen name="edit_text_edit_add_detail_size">20sp</dimen>
+    <dimen name="margin_top">20dp</dimen>
 </resources>

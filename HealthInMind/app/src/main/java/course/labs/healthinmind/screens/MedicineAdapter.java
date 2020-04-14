@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import course.labs.healthinmind.R;
-import course.labs.healthinmind.medecine.Medicine;
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 
 public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MedicineHolder> {
     private List<Medicine> medicines ;

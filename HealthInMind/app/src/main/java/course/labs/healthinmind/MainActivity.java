@@ -16,17 +16,17 @@ public class MainActivity extends BaseActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medicines_view);
+        setContentView(R.layout.appointments_view);
 
-        FloatingActionButton buttonAddMedicine = findViewById(R.id.button_add);
-
-        buttonAddMedicine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddMedicineViewMvc.class);
-                startActivityForResult(intent,1);
-            }
-        });
+//        FloatingActionButton buttonAddMedicine = findViewById(R.id.button_add);
+//
+//        buttonAddMedicine.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, AddMedicineViewMvc.class);
+//                startActivityForResult(intent,1);
+//            }
+//        });
 
 //        ViewPager viewPager = findViewById(R.id.home_image_slider);
 //        ImageSlideAdapter imageSlideAdapter = new ImageSlideAdapter(this);

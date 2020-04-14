@@ -28,7 +28,7 @@ public class ReminderRoomImplTest extends BaseRoomTest {
 
     @Test
     public void createRemindersList(){
-        List<ReminderRoomImpl> reminders = TestUtil.createReminders();
+        List<ReminderRoomImpl> reminders = TestUtil.getReminders(3);
         List<Long> remindersId = reminderDao.insertReminders(reminders);
         assertFalse(remindersId.isEmpty());
         assertEquals(reminders.size(),remindersId.size());

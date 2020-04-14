@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey;
 import java.time.LocalTime;
 @Entity
 public interface Reminder {
-
+    long getReminderId();
+    LocalTime getTime();
 }

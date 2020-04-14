@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.R;
-import course.labs.healthinmind.medecine.Medicine;
-import course.labs.healthinmind.medecine.MedicineRoomImpl;
+import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
 public class MedicineDetailsViewMvc extends BaseViewMvc {

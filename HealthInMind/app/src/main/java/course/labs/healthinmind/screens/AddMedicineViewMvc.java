@@ -12,8 +12,8 @@ import java.util.Date;
 import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.R;
-import course.labs.healthinmind.medecine.AddMedicineUseCase;
-import course.labs.healthinmind.medecine.MedicineRoomImpl;
+import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.screens.views.BaseObservableViewMvc;
 
 public class AddMedicineViewMvc extends BaseObservableViewMvc {
