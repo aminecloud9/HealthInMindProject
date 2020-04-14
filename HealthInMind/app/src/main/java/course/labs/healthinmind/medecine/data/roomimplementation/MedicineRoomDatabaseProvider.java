@@ -3,6 +3,7 @@ package course.labs.healthinmind.medecine.data.roomimplementation;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import course.labs.healthinmind.database.HealthData;
 import course.labs.healthinmind.database.RemindMedicine;
@@ -38,20 +39,30 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
     }
 
     private List<Long> createMedicineReminders(final Medicine medicine) {
-        List<ReminderRoomImpl> reminders = new ArrayList<ReminderRoomImpl>(){
+        List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(medicine.getTakingTimes());
+        List<ReminderRoomImpl> newReminders = getNewRemindersOnly(medicine,existingReminders);
+        List<Long> insertedIds = reminderDao.insertReminders(newReminders);
+
+        return new ArrayList<Long>(){
             {
-                for (LocalTime takingTime : medicine.getTakingTimes()){
-                    add(new ReminderRoomImpl(takingTime));
-                }
+                addAll(insertedIds);
+                addAll(existingReminders.stream()
+                        .map(ReminderRoomImpl::getReminderId)
+                        .collect(Collectors.toList()));
             }
         };
-        return reminderDao.insertReminders(reminders);
-
     }
 
-    private List<ReminderRoomImpl> getNewRemindersOnly(List<ReminderRoomImpl> existingReminders) {
-        //TODO implement
-        return null;
+    private List<ReminderRoomImpl> getNewRemindersOnly(Medicine medicine, List<ReminderRoomImpl> existingReminders) {
+        List<LocalTime> existingTakingTimes =
+                existingReminders.stream().
+                        map(ReminderRoomImpl::getTime).
+                        collect(Collectors.toList());
+       return medicine.getTakingTimes().stream().
+                filter(takingTime -> !existingTakingTimes.contains(takingTime)).
+                map(ReminderRoomImpl::new).
+                collect(Collectors.toList());
+
     }
 
     private void createRemindMedicine(long createdMedicineId, List<Long> remindersIds) {

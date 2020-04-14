@@ -18,4 +18,5 @@ public interface Medicine {
     double getQuantityToTake();
     String getInstructions();
 
+    Long getMedicineId();
 }
