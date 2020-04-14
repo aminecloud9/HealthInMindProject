@@ -1,4 +1,4 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.data.abstractions;
 
 import java.util.List;
 

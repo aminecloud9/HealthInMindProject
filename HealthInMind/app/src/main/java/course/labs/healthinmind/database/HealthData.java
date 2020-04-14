@@ -6,19 +6,24 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.time.LocalTime;
-import java.util.Date;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineDao;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
+import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
+import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
-import course.labs.healthinmind.medecine.MedicineRoomImpl;
-import course.labs.healthinmind.reminders.Reminder;
-
+@Database(entities = {MedicineRoomImpl.class, RemindMedicine.class, ReminderRoomImpl.class}, version = 1)
+@TypeConverters({Converters.class})
 public abstract class HealthData extends RoomDatabase {
     private static HealthData instance;
     public abstract MedicineDao medicineDao();
+    public abstract ReminderDao reminderDao();
+    public abstract RemindMedicineDao remindMedicineDao();
     //the getter of instances from our room Db
     public static synchronized HealthData getInstance(Context context){
         if (instance == null){
@@ -43,8 +48,8 @@ public abstract class HealthData extends RoomDatabase {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected Void doInBackground(Void... voids) {
-            medicineDao.insert(new MedicineRoomImpl("paracetamol","oval",250,3,20,new Reminder(LocalTime.now()),false,
-                    new Date(22-02-2020),true,new Date(22-05-2020),"take it when needed"));
+//            medicineDao.insert(new MedicineRoomImpl("paracetamol","oval",250,3,20,new Reminder(LocalTime.now()),false,
+//                    new Date(22-02-2020),true,new Date(22-05-2020),"take it when needed"));
             return null;
         }
     }

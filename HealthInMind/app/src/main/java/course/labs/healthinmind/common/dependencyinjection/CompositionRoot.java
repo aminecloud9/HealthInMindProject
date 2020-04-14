@@ -2,12 +2,11 @@ package course.labs.healthinmind.common.dependencyinjection;
 
 import android.app.Application;
 
-import course.labs.healthinmind.medecine.MedicineFactory;
-import course.labs.healthinmind.medecine.MedicineFactoryRoomImpl;
-import course.labs.healthinmind.medecine.MedicineRepository;
-import course.labs.healthinmind.medecine.MedicineRepositoryImpl;
-import course.labs.healthinmind.medecine.MedicineRoomDatabaseProvider;
-import course.labs.healthinmind.medecine.MedicinesLocalProvider;
+import course.labs.healthinmind.database.HealthData;
+import course.labs.healthinmind.medecine.data.abstractions.MedicineRepository;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRepositoryImpl;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomDatabaseProvider;
+import course.labs.healthinmind.medecine.data.abstractions.MedicinesLocalProvider;
 
 public class CompositionRoot {
     private Application application;
@@ -21,7 +20,11 @@ public class CompositionRoot {
     }
 
     private MedicinesLocalProvider getMedicinesLocalProvider(){
-        return new MedicineRoomDatabaseProvider(application);
+        return new MedicineRoomDatabaseProvider(getDataBaseInstance());
+    }
+
+    private HealthData getDataBaseInstance() {
+        return HealthData.getInstance(application);
     }
 
 

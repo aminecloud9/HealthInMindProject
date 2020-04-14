@@ -1,14 +1,19 @@
-package course.labs.healthinmind.medecine;
+package course.labs.healthinmind.medecine.data.roomimplementation;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.util.Date;
 
+import course.labs.healthinmind.database.Converters;
+
 @Entity(tableName = "medicine_table")
+
 public class MedicineRoomImpl{
     @PrimaryKey(autoGenerate = true)
-    private int medicineId;
+    private long medicineId;
     private String medicineName;
     private String form;
     private int dosage;
@@ -20,10 +25,44 @@ public class MedicineRoomImpl{
     private Date endDate;
     private String instructions;
     private double quantityToTake;
-
+    
+    @Ignore
     public MedicineRoomImpl(String medicineName, String form, int dosage, int frequency, int refillQuantity,
                              boolean refillReminder, Date startDate, boolean medicineHasNoEndDate,
                             Date endDate, String instructions, double quantityToTake) {
+        setProperties(
+                medicineName,
+                form,
+                dosage,
+                frequency,
+                refillQuantity,
+                refillReminder,
+                startDate,medicineHasNoEndDate,
+                endDate,
+                instructions,
+                quantityToTake
+        );
+    }
+
+    public MedicineRoomImpl(long medicineId, String medicineName, String form, int dosage, int frequency, int refillQuantity,
+                            boolean refillReminder, Date startDate, boolean medicineHasNoEndDate,
+                            Date endDate, String instructions, double quantityToTake) {
+        this.medicineId = medicineId;
+         setProperties(
+                medicineName,
+                form,
+                dosage,
+                frequency,
+                refillQuantity,
+                refillReminder,
+                startDate,medicineHasNoEndDate,
+                endDate,
+                instructions,
+                quantityToTake
+                );
+    }
+
+    private void setProperties(String medicineName, String form, int dosage, int frequency, int refillQuantity, boolean refillReminder, Date startDate, boolean medicineHasNoEndDate, Date endDate, String instructions, double quantityToTake) {
         this.medicineName = medicineName;
         this.form = form;
         this.dosage = dosage;
@@ -37,7 +76,7 @@ public class MedicineRoomImpl{
         this.quantityToTake = quantityToTake;
     }
 
-    public int getMedicineId() {
+    public long getMedicineId() {
         return medicineId;
     }
 

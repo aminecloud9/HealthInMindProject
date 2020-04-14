@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import course.labs.healthinmind.medecine.AddMedicineUseCase;
-import course.labs.healthinmind.medecine.MedicineFactory;
-import course.labs.healthinmind.medecine.MedicineFactoryRoomImpl;
-import course.labs.healthinmind.medecine.ShowMedicineDetailsUseCase;
+import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
+import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineFactoryRoomImpl;
+import course.labs.healthinmind.medecine.domain.ShowMedicineDetailsUseCase;
 import course.labs.healthinmind.screens.ViewMvcFactory;
 
 
