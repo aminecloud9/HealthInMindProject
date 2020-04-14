@@ -8,7 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.R;
-import course.labs.healthinmind.medecine.data.abstractions.Medicine;
+import course.labs.healthinmind.medecine.Medicine;
+import course.labs.healthinmind.medecine.MedicineRoomImpl;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
 public class MedicineDetailsViewMvc extends BaseViewMvc {
@@ -16,7 +17,6 @@ public class MedicineDetailsViewMvc extends BaseViewMvc {
     private TextView form;
     private TextView frequency;
     private TextView refillQuantity;
-    private TextView reminder;
     private TextView medicineStartDate;
     private TextView medicineEndDate;
     private TextView instructions;
@@ -28,7 +28,6 @@ public class MedicineDetailsViewMvc extends BaseViewMvc {
         form.setText(medicine.getForm());
         frequency.setText(String.valueOf(medicine.getFrequency()));
         refillQuantity.setText(medicine.getRefillQuantity());
-
         refillReminderSwitch.setChecked(medicine.isRefillReminder());
         medicineStartDate.setText(medicine.getStartDate().toString());
         medicineEndDate.setText(medicine.getEndDate().toString());
@@ -52,7 +51,6 @@ public class MedicineDetailsViewMvc extends BaseViewMvc {
         form = findViewById(R.id.form_edit_text_id_detail_view);
         frequency = findViewById(R.id.frequency_edit_text_id_detail_view);
         refillQuantity = findViewById(R.id.refill_quantity_edit_text_id_detail_view);
-        reminder = findViewById(R.id.reminder_edit_text_id_detail_view);
         refillReminderSwitch = findViewById(R.id.switch1_detail_view);
         medicineStartDate = findViewById(R.id.medicine_start_date_edit_text_id_detail_view);
         medicineEndDate = findViewById(R.id.medicine_end_date_edit_text_id_detail_view);
