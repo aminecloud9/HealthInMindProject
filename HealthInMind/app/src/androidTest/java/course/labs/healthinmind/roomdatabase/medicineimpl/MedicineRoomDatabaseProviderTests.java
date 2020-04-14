@@ -93,6 +93,32 @@ public class MedicineRoomDatabaseProviderTests extends BaseRoomTest {
 
     @Test
     public void createMedicineWithAllRemindersAlreadyExist(){
+        final List<LocalTime> existingTimes = new ArrayList<LocalTime>(){
+            {
+                add(LocalTime.of(7,0));
+                add(LocalTime.of(12,0));
+            }
+        };
+        reminderDao.insertReminders(
+                new ArrayList<ReminderRoomImpl>(){
+                    {
+                        for (LocalTime existingTime : existingTimes){
+                            add(new ReminderRoomImpl(existingTime));
+                        }
+                    }
+                }
+        );
 
+        when(medicineToBeCreated.getTakingTimes()).thenReturn(existingTimes);
+
+        Long createdMedicineId = medicineProvider.createMedicine(medicineToBeCreated);
+        List<ReminderRoomImpl> createdMedicineTimeReminders = reminderDao.fetchAllRemindersOf(existingTimes);
+        Assert.assertEquals(existingTimes.size(),createdMedicineTimeReminders.size());
+        Medicine createdMedicine = medicineDao.fetchMedicineWithItsReminders(createdMedicineId);
+        Assert.assertEquals(existingTimes.size(),createdMedicine.getTakingTimes().size());
+
+        for (LocalTime takingTime : createdMedicine.getTakingTimes()){
+            Assert.assertTrue(existingTimes.contains(takingTime));
+        }
     }
 }
