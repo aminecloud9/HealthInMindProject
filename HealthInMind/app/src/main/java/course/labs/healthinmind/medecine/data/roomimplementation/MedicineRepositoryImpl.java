@@ -19,7 +19,7 @@ public class MedicineRepositoryImpl implements MedicineRepository {
     }
 
     @Override
-    public Medicine createMedicine(Medicine medicine) {
+    public Long createMedicine(Medicine medicine) {
         return medicinesLocalProvider.createMedicine(medicine);
     }
 

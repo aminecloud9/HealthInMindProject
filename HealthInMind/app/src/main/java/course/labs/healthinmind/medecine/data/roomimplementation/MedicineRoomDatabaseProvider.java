@@ -1,5 +1,6 @@
 package course.labs.healthinmind.medecine.data.roomimplementation;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +30,23 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
     }
 
     @Override
-    public Medicine createMedicine(Medicine medicine) {
-        List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(medicine.getTakingTimes());
-        List<ReminderRoomImpl> onlyNewReminders = getNewRemindersOnly(existingReminders);
-        reminderDao.insertReminders(onlyNewReminders);
+    public Long createMedicine(Medicine medicine) {
         long createdMedicineId = createMedicineInfo(medicine);
-        createRemindMedicine(createdMedicineId, onlyNewReminders);
-        return medicineDao.fetchMedicineWithItsReminders(createdMedicineId);
+        List<Long> medicineReminders = createMedicineReminders(medicine);
+        createRemindMedicine(createdMedicineId,medicineReminders);
+        return createdMedicineId;
+    }
+
+    private List<Long> createMedicineReminders(final Medicine medicine) {
+        List<ReminderRoomImpl> reminders = new ArrayList<ReminderRoomImpl>(){
+            {
+                for (LocalTime takingTime : medicine.getTakingTimes()){
+                    add(new ReminderRoomImpl(takingTime));
+                }
+            }
+        };
+        return reminderDao.insertReminders(reminders);
+
     }
 
     private List<ReminderRoomImpl> getNewRemindersOnly(List<ReminderRoomImpl> existingReminders) {
@@ -43,10 +54,10 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
         return null;
     }
 
-    private void createRemindMedicine(long createdMedicineId, List<ReminderRoomImpl> onlyNewReminders) {
+    private void createRemindMedicine(long createdMedicineId, List<Long> remindersIds) {
         List<RemindMedicine> remindMedicines = new ArrayList<>();
-        for (ReminderRoomImpl reminder : onlyNewReminders){
-            remindMedicines.add(new RemindMedicine(createdMedicineId, reminder.getReminderId()));
+        for (Long reminderId : remindersIds){
+            remindMedicines.add(new RemindMedicine(createdMedicineId, reminderId));
         }
         remindMedicineDao.insertRemindMedicines(remindMedicines);
     }
