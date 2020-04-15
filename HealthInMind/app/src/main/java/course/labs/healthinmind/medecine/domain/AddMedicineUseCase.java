@@ -10,7 +10,7 @@ public class AddMedicineUseCase {
         this.repository = repository;
     }
 
-    public Medicine addMedicine(Medicine medicine){
+    public Long addMedicine(Medicine medicine){
         return repository.createMedicine(medicine);
     }
 }

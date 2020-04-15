@@ -93,5 +93,10 @@ public class MedicineImpl implements Medicine {
         return medicine.getInstructions();
     }
 
+    @Override
+    public Long getMedicineId() {
+        return medicine.getMedicineId();
+    }
+
 
 }

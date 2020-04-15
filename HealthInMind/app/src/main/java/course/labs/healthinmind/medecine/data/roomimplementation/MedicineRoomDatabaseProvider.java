@@ -1,7 +1,9 @@
 package course.labs.healthinmind.medecine.data.roomimplementation;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import course.labs.healthinmind.database.HealthData;
 import course.labs.healthinmind.database.RemindMedicine;
@@ -29,24 +31,44 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
     }
 
     @Override
-    public Medicine createMedicine(Medicine medicine) {
-        List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(medicine.getTakingTimes());
-        List<ReminderRoomImpl> onlyNewReminders = getNewRemindersOnly(existingReminders);
-        reminderDao.insertReminders(onlyNewReminders);
+    public Long createMedicine(Medicine medicine) {
         long createdMedicineId = createMedicineInfo(medicine);
-        createRemindMedicine(createdMedicineId, onlyNewReminders);
-        return medicineDao.fetchMedicineWithItsReminders(createdMedicineId);
+        List<Long> medicineReminders = createMedicineReminders(medicine);
+        createRemindMedicine(createdMedicineId,medicineReminders);
+        return createdMedicineId;
     }
 
-    private List<ReminderRoomImpl> getNewRemindersOnly(List<ReminderRoomImpl> existingReminders) {
-        //TODO implement
-        return null;
+    private List<Long> createMedicineReminders(final Medicine medicine) {
+        List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(medicine.getTakingTimes());
+        List<ReminderRoomImpl> newReminders = getNewRemindersOnly(medicine,existingReminders);
+        List<Long> insertedIds = reminderDao.insertReminders(newReminders);
+
+        return new ArrayList<Long>(){
+            {
+                addAll(insertedIds);
+                addAll(existingReminders.stream()
+                        .map(ReminderRoomImpl::getReminderId)
+                        .collect(Collectors.toList()));
+            }
+        };
     }
 
-    private void createRemindMedicine(long createdMedicineId, List<ReminderRoomImpl> onlyNewReminders) {
+    private List<ReminderRoomImpl> getNewRemindersOnly(Medicine medicine, List<ReminderRoomImpl> existingReminders) {
+        List<LocalTime> existingTakingTimes =
+                existingReminders.stream().
+                        map(ReminderRoomImpl::getTime).
+                        collect(Collectors.toList());
+       return medicine.getTakingTimes().stream().
+                filter(takingTime -> !existingTakingTimes.contains(takingTime)).
+                map(ReminderRoomImpl::new).
+                collect(Collectors.toList());
+
+    }
+
+    private void createRemindMedicine(long createdMedicineId, List<Long> remindersIds) {
         List<RemindMedicine> remindMedicines = new ArrayList<>();
-        for (ReminderRoomImpl reminder : onlyNewReminders){
-            remindMedicines.add(new RemindMedicine(createdMedicineId, reminder.getReminderId()));
+        for (Long reminderId : remindersIds){
+            remindMedicines.add(new RemindMedicine(createdMedicineId, reminderId));
         }
         remindMedicineDao.insertRemindMedicines(remindMedicines);
     }
