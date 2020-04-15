@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_top">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_appointment_type_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:text="@string/appointment_type"
+            android:textSize="@dimen/text_view_edit_add_detail_size" />
+        <TextView
+            android:id="@+id/et_appointment_type_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_appointment_type_detail_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_alignBottom="@+id/et_appointment_type_detail_view"/>
+
+
+        <TextView
+        android:id="@+id/tv_appointment_name_detail_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+        android:layout_below="@+id/et_appointment_type_detail_view"
+        android:text="@string/name_txt"
+        android:textSize="@dimen/text_view_edit_add_detail_size" />
+
+        <TextView
+        android:id="@+id/et_appointment_name_detail_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_appointment_name_detail_view"
+        android:textColor="@color/black"
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_alignBottom="@+id/et_appointment_name_detail_view"/>
+
+        <TextView
+            android:id="@+id/tv_appointment_date_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_below="@+id/et_appointment_name_detail_view"
+            android:text="@string/appointment_date"
+            android:textSize="@dimen/text_view_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/et_appointment_date_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_appointment_date_detail_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/tv_appointment_time_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_below="@+id/et_appointment_date_detail_view"
+            android:text="@string/appointment_time"
+            android:textSize="@dimen/text_view_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/et_appointment_time_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_appointment_time_detail_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/tv_appointment_location_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_below="@+id/et_appointment_time_detail_view"
+            android:text="@string/location"
+            android:textSize="@dimen/text_view_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/et_appointment_location_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_appointment_location_detail_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/tv_remind_appointment_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_appointment_location_detail_view"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/remind"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_remind_appointment_detail_view"
+            android:layout_alignParentRight="true"
+            android:theme="@style/SCBSwitch"
+            android:thumbTint="@color/colorPaletteBlue" />
+
+        <TextView
+            android:id="@+id/tv_appointment_reminder_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_below="@+id/tv_remind_appointment_detail_view"
+            android:text="@string/reminder"
+            android:textSize="@dimen/text_view_edit_add_detail_size" />
+
+        <TextView
+            android:id="@+id/et_appointment_reminder_detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_appointment_reminder_detail_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_alignBottom="@+id/et_appointment_reminder_detail_view"/>
+
+    </RelativeLayout>
+
+</ScrollView>

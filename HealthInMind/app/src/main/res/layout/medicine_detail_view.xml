@@ -24,12 +24,34 @@
             android:textColor="@color/black"
             android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dosage_edit_text_id_detail_view"
+            android:text="Quantity To Take"
+            android:textSize="@dimen/text_view_edit_add_detail_size"
+            android:id="@+id/quantity_to_take_text_view_detail_view"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantity_to_take_text_view_detail_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size"
+            android:id="@+id/quantity_to_take_edit_text_detail_view"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_alignBottom="@+id/quantity_to_take_edit_text_detail_view"/>
+
+
 
         <TextView
             android:id="@+id/form_text_view_id_detail_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dosage_edit_text_id_detail_view"
+            android:layout_below="@+id/quantity_to_take_edit_text_detail_view"
             android:text="@string/form"
             android:textSize="@dimen/text_view_edit_add_detail_size" />
 
@@ -40,6 +62,12 @@
             android:layout_below="@+id/form_text_view_id_detail_view"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_alignBottom="@+id/form_edit_text_id_detail_view"/>
 
 
         <TextView
@@ -57,6 +85,12 @@
             android:layout_below="@+id/frequency_text_view_id_detail_view"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_alignBottom="@id/frequency_edit_text_id_detail_view"/>
 
 
         <TextView
@@ -112,6 +146,7 @@
             android:id="@+id/medicine_start_date_edit_text_id_detail_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="vsrgrtg"
             android:layout_below="@+id/medicine_start_date_text_view_id_detail_view"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_text_edit_add_detail_size" />
@@ -182,15 +217,6 @@
             android:thumbTint="@color/colorPaletteBlue"
             android:theme="@style/SCBSwitch"/>
 
-
-        <Button
-            android:id="@+id/save_medicine_button_id_detail_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/medicine_instruction_edit_text_id_detail_view"
-            android:text="Save"
-            android:textColor="@color/colorPaletteWhite"
-            android:background="@drawable/button_form"/>
     </RelativeLayout>
 
 </ScrollView>

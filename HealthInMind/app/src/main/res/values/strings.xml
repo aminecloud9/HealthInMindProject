@@ -11,10 +11,16 @@
     <string name="medicine_has_no_end_date">Medecine has no end date</string>
     <string name="medicine_end_date">Medecine End Date</string>
     <string name="medicine_instructions">Medicine Instructions</string>
-    <string name="medicine_name">Name</string>
+    <string name="name_txt">Name</string>
     <string name="refill_reminder">Refill Reminder</string>
     <string name="added_medicine_name">Medicine Name</string>
     <string name="added_medicine_dosage">Dosage-eg.250 mg</string>
     <string name="today_s_medicines">Today\'s Medicines</string>
     <string name="upcoming_appointments">Upcoming Appointments</string>
+    <string name="appointment_type">Appointment Type</string>
+    <string name="location">Location</string>
+    <string name="save">Save</string>
+    <string name="appointment_date">Appointment Date</string>
+    <string name="appointment_time">Appointment Time</string>
+    <string name="remind">Remind</string>
 </resources>
