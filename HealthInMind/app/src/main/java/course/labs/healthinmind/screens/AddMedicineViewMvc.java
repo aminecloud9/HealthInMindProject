@@ -1,6 +1,10 @@
 package course.labs.healthinmind.screens;
 
 import android.app.DatePickerDialog;
+import android.os.Build;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,25 +13,26 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import course.labs.healthinmind.R;
-import course.labs.healthinmind.common.dependencyinjection.ControllerCompositionRoot;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
-import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
-import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.screens.views.BaseObservableViewMvc;
 
-public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedicine {
+public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicine.Listener> implements AddMedicine {
+
+    private static final String TAG_DATE_PARSE_ERROR = "date_parse_error";
+
     final Calendar myCalendar = Calendar.getInstance();
     private RecyclerView remindersRecycler;
     private EditText etName;
@@ -48,27 +53,11 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedi
     public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, MedicineFactory medicineFactory) {
         setRootView(layoutInflater.inflate(R.layout.add_medicine_view, parent, false));
         setUpComponents();
-        if (medicineHasNoEndDateSwitch.isActivated()) {
-            medicineFactory.createMedicineThatDoesNotEnd(setTextToString(etName),
-                    setTextToInt(etDosage), setTextToString(etForm), setTextToInt(etFrequency)
-                    , setTextToInt(etRefillQuantity), refillReminderSwitch.isActivated(), setTextToDate(etMedicineStartDate),
-                    Double.parseDouble(setTextToString(etQuantityToTake)), setTextToString(etInstructions), getTakingTimes());
-        } else {
-            medicineFactory.createMedicineThatEnds(etName.getText().toString(),
-                    setTextToInt(etDosage), etForm.getText().toString(), setTextToInt(etFrequency)
-                    , setTextToInt(etRefillQuantity), refillReminderSwitch.isActivated(), setTextToDate(etMedicineStartDate),
-                    setTextToDate(etMedicineEndDate), Double.parseDouble(etQuantityToTake.getText().toString()),
-                    etInstructions.getText().toString(), getTakingTimes());
-        }
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onButtonSaveClicked();
-            }
-        });
+
+        saveButton.setOnClickListener(v -> listener.onButtonSaveClicked(, , , , , , , , , , ));
     }
 
-    public void setUpComponents() {
+    private void setUpComponents() {
         etName = findViewById(R.id.medicine_name_edit_text_id_add_view);
         etDosage = findViewById(R.id.dosage_edit_text_id_add_view);
         etForm = findViewById(R.id.form_edit_text_id_add_view);
@@ -95,15 +84,23 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedi
     }
 
     public Date setTextToDate(EditText editText) {
-        return DATE_FORMATEER.parse(setTextToString(editText));
+        Date date = new Date();
+        try {
+            date = getDataFormat().parse(setTextToString(editText));
+        } catch (ParseException e) {
+            Log.e(TAG_DATE_PARSE_ERROR, Objects.requireNonNull(e.getMessage()));
+        }
+
+        return date;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public LocalTime setTextToTime(EditText editText) {
         return LocalTime.parse(setTextToString(editText));
     }
 
     public void updateLabel(EditText editText) {
-        editText.setText(DATE_FORMATEER.format(myCalendar.getTime()));
+        editText.setText(getDataFormat().format(myCalendar.getTime()));
     }
 
     public int setTextToInt(EditText editText) {

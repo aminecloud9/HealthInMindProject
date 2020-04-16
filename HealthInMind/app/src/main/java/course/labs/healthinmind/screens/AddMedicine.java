@@ -11,10 +11,9 @@ import course.labs.healthinmind.screens.views.ObservableViewMvc;
 public interface AddMedicine extends ObservableViewMvc {
 
     public interface Listener{
-        void onButtonSaveClicked();
+        void onButtonSaveClicked(String medicineName, String form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, double quantityToTake, List<LocalTime> takingTimes);
     }
 
-    void setUpComponents();
 
     String setTextToString(EditText editText);
 

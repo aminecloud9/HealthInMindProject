@@ -9,6 +9,7 @@
         android:id="@+id/et_reminder_recycler_item"
         android:hint="@string/reminder"
         android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:inputType="date"
         android:textColor="@color/black"/>
 
 </RelativeLayout>

@@ -5,9 +5,13 @@ import android.view.View;
 
 import androidx.annotation.StringRes;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 public abstract class BaseViewMvc implements ViewMvc {
     
     private View mRootView;
+    private static final String MY_DATE_FORMAT = "dd/MM/yyyy";
 
     @Override
     public View getRootView() {
@@ -28,5 +32,13 @@ public abstract class BaseViewMvc implements ViewMvc {
 
     protected String getString(@StringRes int id) {
         return getContext().getString(id);
+    }
+
+    protected DateFormat  getDataFormat(){
+       return SimpleDateFormat.getDateInstance();
+    }
+
+    protected DateFormat getTimeFormat(){
+        return SimpleDateFormat.getTimeInstance();
     }
 }

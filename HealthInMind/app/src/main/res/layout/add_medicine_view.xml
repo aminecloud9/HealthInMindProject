@@ -13,7 +13,7 @@
             android:id="@+id/medicine_name_edit_text_id_add_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/spinner_name_add_view"
+            android:layout_toStartOf="@+id/spinner_name_add_view"
             android:inputType="text"
             android:hint="@string/added_medicine_name"
             android:textColor="@color/black"
@@ -94,17 +94,18 @@
             android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_medicine_reminders_add_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recycler_medicine_reminders_add_view"
-            android:layout_below="@+id/frequency_edit_text_id_add_view"
             android:layout_above="@+id/refill_quantity_edit_text_id_add_view"
+            android:layout_below="@+id/frequency_edit_text_id_add_view"
             tools:listitem="@layout/et_reminder_item">
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/recycler_medicine_reminders_add_view"
-            android:layout_alignParentRight="true"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/recycler_medicine_reminders_add_view"
+                android:layout_alignParentRight="true" />
         </androidx.recyclerview.widget.RecyclerView>
 
         <EditText
