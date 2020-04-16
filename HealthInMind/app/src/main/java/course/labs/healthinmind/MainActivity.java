@@ -16,7 +16,7 @@ public class MainActivity extends BaseActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medicine_detail_view);
+        setContentView(R.layout.add_medicine_view);
 
 //        FloatingActionButton buttonAddMedicine = findViewById(R.id.button_add);
 //

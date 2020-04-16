@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -109,19 +110,26 @@
             android:layout_marginBottom="@dimen/Spinner_margin_bottom"
             android:layout_alignBottom="@+id/frequency_edit_text_id_edit_view"/>
 
-
-        <TextView
-            android:id="@+id/reminder_text_view_id_edit_view"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/frequency_edit_text_id_edit_view"
-            android:text="@string/reminder"
-            android:textSize="@dimen/text_view_edit_add_detail_size" />
+            android:id="@+id/recycler_medicine_reminders_edit_view"
+            android:layout_below="@+id/frequency_text_view_id_edit_view"
+            android:layout_above="@+id/refill_quantity_text_view_id_edit_view"
+            tools:listitem="@layout/et_reminder_item">
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/recycler_medicine_reminders_edit_view"
+                android:layout_alignParentRight="true"/>
+
+        </androidx.recyclerview.widget.RecyclerView>
+
         <EditText
             android:id="@+id/reminder_edit_text_id_edit_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/reminder_text_view_id_edit_view"
+            android:layout_below="@+id/recycler_medicine_reminders_edit_view"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_text_edit_add_detail_size" />
         <Spinner

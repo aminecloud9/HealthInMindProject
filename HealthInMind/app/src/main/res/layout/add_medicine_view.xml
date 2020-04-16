@@ -1,169 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/medicine_name_edit_text_id_add_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/added_medicine_name"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/Spinner_margin_bottom"
-        android:layout_alignBottom="@+id/medicine_name_edit_text_id_add_view"/>
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/medicine_name_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/spinner_name_add_view"
+            android:inputType="text"
+            android:hint="@string/added_medicine_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+        <Spinner
+            android:id="@+id/spinner_name_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/medicine_name_edit_text_id_add_view"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
 
 
-    <EditText
-        android:id="@+id/dosage_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/medicine_name_edit_text_id_add_view"
-        android:hint="@string/added_medicine_dosage"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <EditText
+            android:id="@+id/dosage_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/medicine_name_edit_text_id_add_view"
+            android:hint="@string/added_medicine_dosage"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dosage_edit_text_id_add_view"
-        android:hint="Quantity  To Take"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size"
-        android:id="@+id/quantity_to_take_edit_text_add_view"/>
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/Spinner_margin_bottom"
-        android:layout_alignBottom="@id/quantity_to_take_edit_text_add_view"/>
+        <EditText
+            android:id="@+id/quantity_to_take_edit_text_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/dosage_edit_text_id_add_view"
+            android:hint="Quantity  To Take"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
-    <EditText
-        android:id="@+id/form_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/quantity_to_take_edit_text_add_view"
-        android:hint="@string/form"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/Spinner_margin_bottom"
-        android:layout_alignBottom="@+id/form_edit_text_id_add_view"/>
+        <Spinner
+            android:id="@+id/spinner_quantity_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/quantity_to_take_edit_text_add_view"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
 
+        <EditText
+            android:id="@+id/form_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textAutoCorrect"
+            android:layout_below="@+id/quantity_to_take_edit_text_add_view"
+            android:hint="@string/form"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
-    <EditText
-        android:id="@+id/frequency_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/frequency"
-        android:layout_below="@+id/form_edit_text_id_add_view"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/Spinner_margin_bottom"
-        android:layout_alignBottom="@+id/frequency_edit_text_id_add_view"/>
+        <Spinner
+            android:id="@+id/spinner_form_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/form_edit_text_id_add_view"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
 
 
+        <EditText
+            android:id="@+id/frequency_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/form_edit_text_id_add_view"
+            android:hint="@string/frequency"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
-    <EditText
-        android:id="@+id/refill_quantity_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/refill_quantity"
-        android:layout_below="@+id/frequency_edit_text_id_add_view"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <Spinner
+            android:id="@+id/spinner_frequency_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/frequency_edit_text_id_add_view"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_medicine_reminders_add_view"
+            android:layout_below="@+id/frequency_edit_text_id_add_view"
+            android:layout_above="@+id/refill_quantity_edit_text_id_add_view"
+            tools:listitem="@layout/et_reminder_item">
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/recycler_medicine_reminders_add_view"
+            android:layout_alignParentRight="true"/>
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/refill_reminder_text_view_id_add_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/refill_quantity_edit_text_id_add_view"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/refill_reminder"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
-
-    <EditText
-        android:id="@+id/medicine_start_date_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/medicine_start_date"
-        android:layout_below="@+id/refill_reminder_text_view_id_add_view"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
-
-
-    <TextView
-        android:id="@+id/medicine_has_no_end_date_text_view_id_add_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/medicine_start_date_edit_text_id_add_view"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/medicine_has_no_end_date"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
-
-    <EditText
-        android:id="@+id/medicine_end_date_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/medicine_end_date"
-        android:layout_below="@+id/medicine_has_no_end_date_text_view_id_add_view"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <EditText
+            android:id="@+id/refill_quantity_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/recycler_medicine_reminders_add_view"
+            android:hint="@string/refill_quantity"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
-    <EditText
-        android:id="@+id/medicine_instruction_edit_text_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/medicine_instructions"
-        android:layout_below="@+id/medicine_end_date_edit_text_id_add_view"
-        android:textColor="@color/black"
-        android:textSize="@dimen/edit_text_edit_add_detail_size" />
+        <TextView
+            android:id="@+id/refill_reminder_text_view_id_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/refill_quantity_edit_text_id_add_view"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/refill_reminder"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
+
+        <EditText
+            android:id="@+id/medicine_start_date_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/refill_reminder_text_view_id_add_view"
+            android:hint="@string/medicine_start_date"
+            android:inputType="date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
+        <TextView
+            android:id="@+id/medicine_has_no_end_date_text_view_id_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medicine_start_date_edit_text_id_add_view"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/medicine_has_no_end_date"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
-    <Switch
-        android:id="@+id/switch1_add_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/refill_reminder_text_view_id_add_view"
-        android:layout_alignParentRight="true"
-        android:theme="@style/SCBSwitch"
-        android:thumbTint="@color/colorPaletteBlue" />
+        <EditText
+            android:id="@+id/medicine_end_date_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medicine_has_no_end_date_text_view_id_add_view"
+            android:hint="@string/medicine_end_date"
+            android:inputType="date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
-    <Switch
-        android:id="@+id/switch2_add_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/medicine_has_no_end_date_text_view_id_add_view"
-        android:layout_alignParentRight="true"
-        android:theme="@style/SCBSwitch"
-        android:thumbTint="@color/colorPaletteBlue" />
+        <EditText
+            android:id="@+id/medicine_instruction_edit_text_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textAutoCorrect"
+            android:layout_below="@+id/medicine_end_date_edit_text_id_add_view"
+            android:hint="@string/medicine_instructions"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
 
-    <Button
-        android:id="@+id/save_medicine_button_id_add_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/medicine_instruction_edit_text_id_add_view"
-        android:background="@drawable/button_form"
-        android:text="Save"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/colorPaletteWhite" />
-</RelativeLayout>
+        <Switch
+            android:id="@+id/switch1_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/refill_reminder_text_view_id_add_view"
+            android:layout_alignParentRight="true"
+            android:theme="@style/SCBSwitch"
+            android:thumbTint="@color/colorPaletteBlue" />
+
+
+        <Switch
+            android:id="@+id/switch2_add_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/medicine_has_no_end_date_text_view_id_add_view"
+            android:layout_alignParentRight="true"
+            android:theme="@style/SCBSwitch"
+            android:thumbTint="@color/colorPaletteBlue" />
+
+
+        <Button
+            android:id="@+id/save_medicine_button_id_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medicine_instruction_edit_text_id_add_view"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_form"
+            android:text="Save"
+            android:textColor="@color/colorPaletteWhite" />
+
+    </RelativeLayout>
+
+</ScrollView>

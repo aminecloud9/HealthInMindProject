@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/appointment_type"
         android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:inputType="text"
         android:layout_marginTop="@dimen/margin_top"
         android:textColor="@color/black"
         android:id="@+id/et_appointment_type_add_view"/>
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_appointment_type_add_view"
         android:hint="@string/name_txt"
+        android:inputType="text"
         android:layout_marginTop="@dimen/margin_top"
         android:textSize="@dimen/edit_text_edit_add_detail_size"
         android:id="@+id/et_appointment_name_add_view"
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/appointment_date"
         android:layout_marginTop="@dimen/margin_top"
+        android:inputType="date"
         android:layout_below="@+id/et_appointment_name_add_view"
         android:id="@+id/et_appointment_date_add_view"
         android:textSize="@dimen/edit_text_edit_add_detail_size"
@@ -48,6 +51,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="time"
         android:id="@+id/et_appointment_time_add_view"
         android:layout_below="@+id/et_appointment_date_add_view"
         android:hint="@string/appointment_time"
@@ -59,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/location"
+        android:inputType="text"
         android:layout_marginTop="@dimen/margin_top"
         android:id="@+id/et_appointment_location_add_view"
         android:textSize="@dimen/edit_text_edit_add_detail_size"
@@ -74,12 +79,6 @@
         android:id="@+id/tv_appointment_reminder_add_view"
         android:textSize="@dimen/text_view_edit_add_detail_size"
         android:textColor="@color/black"/>
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/Spinner_margin_bottom"
-        android:layout_alignBottom="@+id/tv_appointment_reminder_add_view"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -89,15 +88,22 @@
         android:layout_alignParentRight="true"
         android:theme="@style/SCBSwitch"
         android:thumbTint="@color/colorPaletteBlue"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/reminder"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_below="@+id/tv_appointment_reminder_add_view"
-        android:id="@+id/et_appointment_reminder_add_view"
-        android:textSize="@dimen/edit_text_edit_add_detail_size"
-        android:textColor="@color/black"/>
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:inputType="datetime"-->
+<!--        android:hint="@string/reminder"-->
+<!--        android:layout_marginTop="@dimen/margin_top"-->
+<!--        android:layout_below="@+id/tv_appointment_reminder_add_view"-->
+<!--        android:id="@+id/et_appointment_reminder_add_view"-->
+<!--        android:textSize="@dimen/edit_text_edit_add_detail_size"-->
+<!--        android:textColor="@color/black"/>-->
+<!--    <Spinner-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginBottom="@dimen/Spinner_margin_bottom"-->
+<!--        android:layout_alignBottom="@+id/et_appointment_reminder_add_view"/>-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,7 +111,7 @@
         android:background="@drawable/button_form"
         android:layout_marginTop="@dimen/margin_top"
         android:textColor="@color/colorPaletteWhite"
-        android:layout_below="@+id/et_appointment_reminder_add_view"/>
+        android:layout_below="@+id/tv_appointment_reminder_add_view"/>
 
 
 
