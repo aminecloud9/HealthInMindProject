@@ -42,6 +42,8 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedi
     private Button saveButton;
     private Switch refillReminderSwitch;
     private Switch medicineHasNoEndDateSwitch;
+    private RecyclerView recyclerReminders;
+    Listener listener;
 
     public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, MedicineFactory medicineFactory) {
         setRootView(layoutInflater.inflate(R.layout.add_medicine_view, parent, false));
@@ -58,6 +60,12 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedi
                     setTextToDate(etMedicineEndDate), Double.parseDouble(etQuantityToTake.getText().toString()),
                     etInstructions.getText().toString(), getTakingTimes());
         }
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onButtonSaveClicked();
+            }
+        });
     }
 
     public void setUpComponents() {
@@ -73,13 +81,15 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedi
         refillReminderSwitch = findViewById(R.id.switch1_add_view);
         medicineHasNoEndDateSwitch = findViewById(R.id.switch2_add_view);
         inflateCalenderSetDateFrom(etMedicineEndDate);
+        recyclerReminders = findViewById(R.id.recycler_medicine_reminders_add_view);
         //.....
     }
 
+
     public List<LocalTime> getTakingTimes() {
         List<LocalTime> takingTimes = new ArrayList<>();
-        for (EditText editTextreminder : findViewById(R.id.recycler_medicine_reminders_add_view).getContext()) {
-            takingTimes.add(setTextToTime(editTextreminder));
+        for (int i=0 ; i < recyclerReminders.getChildCount(); i++) {
+            takingTimes.add(setTextToTime(recyclerReminders.getChildItemId()));
         }
         return takingTimes;
     }
@@ -131,6 +141,5 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc implements AddMedi
             }
         });
     }
-
 
 }
