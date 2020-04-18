@@ -1,7 +1,8 @@
-package course.labs.healthinmind.screens;
+package course.labs.healthinmind.screens.addmedicine;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
@@ -14,8 +15,12 @@ import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
 import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
 import course.labs.healthinmind.screens.commons.BaseActivity;
 
-public class AddMedicineActivity extends BaseActivity implements AddMedicine.ListenerForButtonSave{
+public class AddMedicineActivity extends BaseActivity implements AddMedicine.AddMedicineViewListener{
 
+    public static void start(Context context){
+        Intent intent = new Intent(context,AddMedicineActivity.class);
+        context.startActivity(intent);
+    }
 
     private AddMedicineViewMvc view;
     private AddMedicineUseCase addMedicineUseCase;
@@ -37,7 +42,7 @@ public class AddMedicineActivity extends BaseActivity implements AddMedicine.Lis
     }
 
     @Override
-    public void onButtonSaveClicked(String medicineName, String form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, double quantityToTake, List<LocalTime> takingTimes) {
+    public void onSaveClicked(String medicineName, String form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, double quantityToTake, List<LocalTime> takingTimes) {
         Medicine medicine;
         if(medicineHasNoEndDate){
             medicine = medicineFactory.createMedicineThatDoesNotEnd(

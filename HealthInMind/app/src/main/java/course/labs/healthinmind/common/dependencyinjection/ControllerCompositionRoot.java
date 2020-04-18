@@ -11,6 +11,7 @@ import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineFactoryRoomImpl;
 import course.labs.healthinmind.medecine.domain.ShowMedicineDetailsUseCase;
 import course.labs.healthinmind.screens.ViewMvcFactory;
+import course.labs.healthinmind.screens.commons.ScreensNavigator;
 
 
 public class ControllerCompositionRoot {
@@ -59,5 +60,9 @@ public class ControllerCompositionRoot {
         }
 
         return medicineFactory;
+    }
+
+    public ScreensNavigator getScreensNavigator(){
+        return new ScreensNavigator(getContext());
     }
 }

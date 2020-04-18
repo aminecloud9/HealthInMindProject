@@ -1,22 +1,22 @@
 package course.labs.healthinmind;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import course.labs.healthinmind.screens.AddMedicineViewMvc;
 import course.labs.healthinmind.screens.commons.BaseActivity;
+import course.labs.healthinmind.screens.commons.ScreensNavigator;
 
 public class MainActivity extends BaseActivity {
-
+    private ScreensNavigator screensNavigator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        screensNavigator = getCompositionRoot().getScreensNavigator();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_medicine_view);
+        if(savedInstanceState == null){
+            screensNavigator.toAddMedicineActivity();
+        }
 
 //        FloatingActionButton buttonAddMedicine = findViewById(R.id.button_add);
 //
