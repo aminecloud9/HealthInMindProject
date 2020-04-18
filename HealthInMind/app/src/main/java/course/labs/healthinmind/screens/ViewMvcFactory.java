@@ -15,8 +15,13 @@ public class ViewMvcFactory {
         mLayoutInflater = layoutInflater;
     }
 
-    public AddMedicineViewMvc getAddMedicineViewMvc(@Nullable ViewGroup parent, MedicineFactory medicineFactory){
-        return new AddMedicineViewMvc(mLayoutInflater,parent,medicineFactory);
+    public AddMedicineViewMvc getAddMedicineViewMvc(@Nullable ViewGroup parent){
+        return new AddMedicineViewMvc(mLayoutInflater,parent);
     }
 
+    public ReminderView getReminderView(@Nullable ViewGroup parent){
+        return new ReminderView(mLayoutInflater,parent);
+    }
+
+    p
 }

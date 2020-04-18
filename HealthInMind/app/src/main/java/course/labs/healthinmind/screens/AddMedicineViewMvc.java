@@ -1,40 +1,28 @@
 package course.labs.healthinmind.screens;
 
-import android.app.DatePickerDialog;
-import android.os.Build;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import course.labs.healthinmind.R;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
+import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 import course.labs.healthinmind.screens.views.BaseObservableViewMvc;
 
-public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicine.Listener> implements AddMedicine {
+public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicine.ListenerForReminders> implements AddMedicine {
 
-    private static final String TAG_DATE_PARSE_ERROR = "date_parse_error";
 
-    final Calendar myCalendar = Calendar.getInstance();
     private RecyclerView remindersRecycler;
+    private RemindersRecyclerAdapter remindersAdapter;
     private EditText etName;
     private EditText etDosage;
     private EditText etForm;
@@ -48,13 +36,24 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicine.Listen
     private Switch refillReminderSwitch;
     private Switch medicineHasNoEndDateSwitch;
     private RecyclerView recyclerReminders;
-    Listener listener;
+    ListenerForButtonSave listener;
 
-    public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, MedicineFactory medicineFactory) {
+    public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent) {
         setRootView(layoutInflater.inflate(R.layout.add_medicine_view, parent, false));
         setUpComponents();
-
-        saveButton.setOnClickListener(v -> listener.onButtonSaveClicked(, , , , , , , , , , ));
+        saveButton.setOnClickListener(v -> listener.onButtonSaveClicked(
+                setTextToString(etName),
+                setTextToString(etForm),
+                setTextToInt(etDosage),
+                setTextToInt(etRefillQuantity),
+                refillReminderSwitch.isActivated(),
+                medicineHasNoEndDateSwitch.isActivated(),
+                setTextToDate(etMedicineStartDate),
+                setTextToDate(etMedicineEndDate),
+                setTextToString(etInstructions),
+                Double.parseDouble(setTextToString(etQuantityToTake)),
+                getTakingTimes())
+        );
     }
 
     private void setUpComponents() {
@@ -75,68 +74,21 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicine.Listen
     }
 
 
-    public List<LocalTime> getTakingTimes() {
-        List<LocalTime> takingTimes = new ArrayList<>();
-        for (int i=0 ; i < recyclerReminders.getChildCount(); i++) {
-            takingTimes.add(setTextToTime(recyclerReminders.getChildItemId()));
+//    public List<LocalTime> getTakingTimes() {
+//        List<LocalTime> takingTimes = new ArrayList<>();
+//        for (int i = 0; i < RemindersRecyclerAdapter; i++) {
+//            takingTimes.add(setTextToTime(recyclerReminders.getChildItemId()));
+//        }
+//        return takingTimes;
+//    }
+
+    public void onReminderClicked(ReminderDto reminderDto) {
+        for (ListenerForReminders listener : getListeners()) {
+            listener.onReminderClicked(reminderDto);
         }
-        return takingTimes;
     }
 
-    public Date setTextToDate(EditText editText) {
-        Date date = new Date();
-        try {
-            date = getDataFormat().parse(setTextToString(editText));
-        } catch (ParseException e) {
-            Log.e(TAG_DATE_PARSE_ERROR, Objects.requireNonNull(e.getMessage()));
-        }
+    public void bindReminders(Reminder reminder){
 
-        return date;
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public LocalTime setTextToTime(EditText editText) {
-        return LocalTime.parse(setTextToString(editText));
-    }
-
-    public void updateLabel(EditText editText) {
-        editText.setText(getDataFormat().format(myCalendar.getTime()));
-    }
-
-    public int setTextToInt(EditText editText) {
-        return Integer.parseInt(setTextToString(editText));
-    }
-
-    public String setTextToString(EditText editText) {
-        return editText.getText().toString();
-    }
-
-
-    public void inflateCalenderSetDateFrom(EditText editTextDate) {
-
-        etMedicineStartDate.setOnClickListener(new View.OnClickListener() {
-            DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel(etMedicineStartDate);
-                }
-
-            };
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(getContext(), date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-    }
-
 }

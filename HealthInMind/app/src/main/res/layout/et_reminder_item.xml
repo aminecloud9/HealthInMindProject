@@ -3,13 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/et_reminder_recycler_item"
-        android:hint="@string/reminder"
-        android:textSize="@dimen/edit_text_edit_add_detail_size"
-        android:inputType="date"
+        android:id="@+id/tv_reminder_recycler_item"
+        android:text="@string/reminder"
+        android:textSize="@dimen/text_view_edit_add_detail_size"
         android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_time_reminder_item"
+        android:layout_below="@+id/tv_reminder_recycler_item"
+        android:text="@string/reminder"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        android:textColor="@color/black"
+        android:text="@string/quantity_to_take"
+        android:gravity="right"
+        android:layout_alignTop="@+id/tv_time_reminder_item"
+        android:id="@+id/tv_quantity_reminer_item"/>
 
 </RelativeLayout>

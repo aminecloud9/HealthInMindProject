@@ -1,6 +1,7 @@
 package course.labs.healthinmind.screens;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
@@ -13,7 +14,7 @@ import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
 import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
 import course.labs.healthinmind.screens.commons.BaseActivity;
 
-public class AddMedicineActivity extends BaseActivity implements AddMedicineViewMvc.Listener{
+public class AddMedicineActivity extends BaseActivity implements AddMedicine.ListenerForButtonSave{
 
 
     private AddMedicineViewMvc view;
@@ -26,14 +27,13 @@ public class AddMedicineActivity extends BaseActivity implements AddMedicineView
          medicineFactory = getCompositionRoot().getMedicineFactory();
         view = getCompositionRoot().
                 getViewMvcFactory().
-                getAddMedicineViewMvc(null,getCompositionRoot().getMedicineFactory());
+                getAddMedicineViewMvc(null);
         setContentView(view.getRootView());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        view.registerListener(this);
     }
 
     @Override

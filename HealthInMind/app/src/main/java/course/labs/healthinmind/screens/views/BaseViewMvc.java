@@ -1,17 +1,30 @@
 package course.labs.healthinmind.screens.views;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Objects;
 
 public abstract class BaseViewMvc implements ViewMvc {
-    
-    private View mRootView;
+
+    private static final String TAG_DATE_PARSE_ERROR = "date_parse_error";
     private static final String MY_DATE_FORMAT = "dd/MM/yyyy";
+    public static final Calendar MY_CALENDAR = Calendar.getInstance();
+    private View mRootView;
 
     @Override
     public View getRootView() {
@@ -34,11 +47,62 @@ public abstract class BaseViewMvc implements ViewMvc {
         return getContext().getString(id);
     }
 
-    protected DateFormat  getDataFormat(){
+    protected DateFormat getDateFormat(){
        return SimpleDateFormat.getDateInstance();
     }
 
-    protected DateFormat getTimeFormat(){
-        return SimpleDateFormat.getTimeInstance();
+
+    protected Date setTextToDate(EditText editText) {
+        Date date = new Date();
+        try {
+            date = getDateFormat().parse(setTextToString(editText));
+        } catch (ParseException e) {
+            Log.e(TAG_DATE_PARSE_ERROR, Objects.requireNonNull(e.getMessage()));
+        }
+        return date;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    protected LocalTime setTextToTime(EditText editText) {
+        return LocalTime.parse(setTextToString(editText));
+    }
+
+    protected void updateLabel(EditText editText) {
+        editText.setText(getDateFormat().format(MY_CALENDAR.getTime()));
+    }
+
+    protected int setTextToInt(EditText editText) {
+        return Integer.parseInt(setTextToString(editText));
+    }
+
+    protected String setTextToString(EditText editText) {
+        return editText.getText().toString();
+    }
+
+
+    protected void inflateCalenderSetDateFrom(EditText editTextDate) {
+
+        editTextDate.setOnClickListener(new View.OnClickListener() {
+            DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    // TODO Auto-generated method stub
+                    MY_CALENDAR.set(Calendar.YEAR, year);
+                    MY_CALENDAR.set(Calendar.MONTH, monthOfYear);
+                    MY_CALENDAR.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateLabel(editTextDate);
+                }
+
+            };
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(getContext(), date, MY_CALENDAR
+                        .get(Calendar.YEAR), MY_CALENDAR.get(Calendar.MONTH),
+                        MY_CALENDAR.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
     }
 }

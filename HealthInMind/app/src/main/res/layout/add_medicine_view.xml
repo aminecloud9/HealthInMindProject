@@ -93,27 +93,13 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_medicine_reminders_add_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/refill_quantity_edit_text_id_add_view"
-            android:layout_below="@+id/frequency_edit_text_id_add_view"
-            tools:listitem="@layout/et_reminder_item">
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/recycler_medicine_reminders_add_view"
-                android:layout_alignParentRight="true" />
-        </androidx.recyclerview.widget.RecyclerView>
 
         <EditText
             android:id="@+id/refill_quantity_edit_text_id_add_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:layout_below="@+id/recycler_medicine_reminders_add_view"
+            android:layout_below="@+id/frequency_edit_text_id_add_view"
             android:hint="@string/refill_quantity"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_text_edit_add_detail_size" />
@@ -191,12 +177,26 @@
             android:theme="@style/SCBSwitch"
             android:thumbTint="@color/colorPaletteBlue" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_medicine_reminders_add_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/refill_quantity_edit_text_id_add_view"
+            android:layout_below="@+id/medicine_instruction_edit_text_id_add_view"
+            tools:listitem="@layout/et_reminder_item">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/recycler_medicine_reminders_add_view"
+                android:layout_alignParentRight="true" />
+        </androidx.recyclerview.widget.RecyclerView>
 
         <Button
             android:id="@+id/save_medicine_button_id_add_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/medicine_instruction_edit_text_id_add_view"
+            android:layout_below="@+id/recycler_medicine_reminders_add_view"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_form"
             android:text="Save"

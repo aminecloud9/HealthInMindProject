@@ -12,8 +12,19 @@ import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomIm
 public class MedicineFactoryRoomImpl implements MedicineFactory {
 
     @Override
-    public Medicine createMedicineThatEnds(String name, int dosage, String form, int frequency, int refillQuantity, boolean toBeRemindedToRefill, Date startingDate, Date endingDate, double quantityToTake, String instructions, List<LocalTime> takingTimes) {
-        MedicineRoomImpl medicine = new MedicineRoomImpl(name,
+    public Medicine createMedicineThatEnds(String name,
+                                           int dosage,
+                                           String form,
+                                           int frequency,
+                                           int refillQuantity,
+                                           boolean toBeRemindedToRefill,
+                                           Date startingDate,
+                                           Date endingDate,
+                                           double quantityToTake,
+                                           String instructions,
+                                           List<LocalTime> takingTimes) {
+        MedicineRoomImpl medicine = new MedicineRoomImpl(
+                name,
                 form,
                 dosage,
                 frequency,
@@ -24,8 +35,6 @@ public class MedicineFactoryRoomImpl implements MedicineFactory {
                 endingDate,
                 instructions,
                 quantityToTake);
-
-
         List<ReminderRoomImpl> reminders = createReminders(takingTimes);
         return new MedicineImpl(medicine,reminders);
     }
@@ -48,8 +57,11 @@ public class MedicineFactoryRoomImpl implements MedicineFactory {
                 frequency,
                 refillQuantity,
                 toBeRemindedToRefill,
-                startingDate,true, null,instructions,quantityToTake);
-
+                startingDate,
+                true,
+                null,
+                instructions,
+                quantityToTake);
         List<ReminderRoomImpl> reminders = createReminders(takingTimes);
         return new MedicineImpl(medicine,reminders);
     }
@@ -61,6 +73,4 @@ public class MedicineFactoryRoomImpl implements MedicineFactory {
         }
         return reminders;
     }
-
-
 }
