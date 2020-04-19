@@ -22,7 +22,20 @@
     <string name="appointment_date">Appointment Date</string>
     <string name="appointment_time">Appointment Time</string>
     <string name="remind">Remind</string>
-    <string name="quantity_to_take">%d pills</string>
+    <string name="quantity_to_take">%1$s pills</string>
     <string name="quantity">Quantity</string>
     <string name="save">Save</string>
+    <string name="reminders">Reminders</string>
+    <string name="add_a_reminder">Add a reminder</string>
+    <string name="quantity_hint">Select a quantity</string>
+    <string name="quarter">Quarter</string>
+    <string name="half">Half</string>
+    <string name="quarter_and_half">Quarter and half</string>
+    <string name="one">One</string>
+    <string name="one_and_quarter">One and quarter</string>
+    <string name="one_and_half">One and half</string>
+    <string name="one_and_three_quarters">One and three quarters</string>
+    <string name="two">Two</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

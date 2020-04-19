@@ -27,6 +27,6 @@
         android:text="@string/quantity_to_take"
         android:gravity="right"
         android:layout_alignTop="@+id/tv_time_reminder_item"
-        android:id="@+id/tv_quantity_reminer_item"/>
+        android:id="@+id/tv_quantity_reminder_item"/>
 
 </RelativeLayout>

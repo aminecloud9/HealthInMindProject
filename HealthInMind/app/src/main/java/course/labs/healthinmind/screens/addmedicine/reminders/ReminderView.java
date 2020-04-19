@@ -20,18 +20,18 @@ public class ReminderView extends BaseObservableViewMvc <ReminderView.Listener> 
     private TextView quantityToTake;
 
     public ReminderView(LayoutInflater layoutInflater, ViewGroup parent) {
-        setRootView(layoutInflater.inflate(R.layout.add_medicine_view,parent,false));
+        setRootView(layoutInflater.inflate(R.layout.et_reminder_item,parent,false));
         setUpComponents();
     }
 
     private void setUpComponents() {
         reminderTime = findViewById(R.id.tv_time_reminder_item);
-        quantityToTake = findViewById(R.id.tv_quantity_reminer_item);
+        quantityToTake = findViewById(R.id.tv_quantity_reminder_item);
     }
 
     void bindReminder(ReminderDto reminderDto) {
         reminderTime.setText(reminderDto.getTime().toString());
-        quantityToTake.setText(String.valueOf(reminderDto.quantityToTake));
+        quantityToTake.setText(getContext().getString(R.string.quantity_to_take, String.valueOf(reminderDto.quantityToTake)));
     }
 
 }

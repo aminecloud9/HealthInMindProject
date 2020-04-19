@@ -23,9 +23,11 @@ public interface AddMedicine {
                                  double quantityToTake,
                                  List<LocalTime> takingTimes);
 
+        void onAddReminderClick();
+
     }
 
 
-
+    void addReminder(ReminderDto reminderDto);
 
 }

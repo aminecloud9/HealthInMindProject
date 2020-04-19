@@ -2,6 +2,7 @@ package course.labs.healthinmind.common.dependencyinjection;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -10,7 +11,9 @@ import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineFactoryRoomImpl;
 import course.labs.healthinmind.medecine.domain.ShowMedicineDetailsUseCase;
+import course.labs.healthinmind.screens.addmedicine.AddReminderDialogController;
 import course.labs.healthinmind.screens.ViewMvcFactory;
+import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
 import course.labs.healthinmind.screens.commons.ScreensNavigator;
 
 
@@ -64,5 +67,13 @@ public class ControllerCompositionRoot {
 
     public ScreensNavigator getScreensNavigator(){
         return new ScreensNavigator(getContext());
+    }
+
+    private StringQuantityMapper getStringQuantityMapper(){
+        return new StringQuantityMapper(getContext());
+    }
+
+    public AddReminderDialogController getAddReminderDialogController(){
+        return new AddReminderDialogController(getStringQuantityMapper(), getViewMvcFactory());
     }
 }

@@ -6,7 +6,9 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.screens.addmedicine.AddMedicineViewMvc;
+import course.labs.healthinmind.screens.addmedicine.AddReminderDialogWindow;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderView;
+import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
 
 public class ViewMvcFactory {
 
@@ -24,4 +26,7 @@ public class ViewMvcFactory {
         return new ReminderView(mLayoutInflater,parent);
     }
 
+    public AddReminderDialogWindow getAddReminderDialogWindow(ViewGroup parent, StringQuantityMapper quantityMapper){
+        return new AddReminderDialogWindow(mLayoutInflater,parent,quantityMapper);
+    }
 }

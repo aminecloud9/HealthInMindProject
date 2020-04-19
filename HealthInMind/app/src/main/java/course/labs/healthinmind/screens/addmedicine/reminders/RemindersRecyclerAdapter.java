@@ -16,9 +16,9 @@ import course.labs.healthinmind.screens.addmedicine.AddMedicineViewMvc;
 public class RemindersRecyclerAdapter extends RecyclerView.Adapter<RemindersRecyclerAdapter.RemindersViewHolder> {
 
     public interface Listener {
+
         void onReminderClicked(ReminderDto reminderDto);
     }
-
 
 
     static class RemindersViewHolder extends RecyclerView.ViewHolder {
@@ -31,10 +31,10 @@ public class RemindersRecyclerAdapter extends RecyclerView.Adapter<RemindersRecy
         }
 
 
-    }
-//    private final Listener listener;
-    private final ViewMvcFactory mViewMvcFactory;
 
+    }
+    //    private final Listener listener;
+    private final ViewMvcFactory mViewMvcFactory;
     private List<ReminderDto> mReminders = new ArrayList<>();
 
     public RemindersRecyclerAdapter(ViewMvcFactory mViewMvcFactory) {
@@ -48,6 +48,11 @@ public class RemindersRecyclerAdapter extends RecyclerView.Adapter<RemindersRecy
         ReminderView reminderView = mViewMvcFactory.getReminderView(parent);
 //        viewMvc.registerListener(this);
         return new RemindersViewHolder(reminderView);
+    }
+
+    public void addReminder(ReminderDto reminderDto) {
+        mReminders.add(reminderDto);
+        notifyDataSetChanged();
     }
 
     @Override
