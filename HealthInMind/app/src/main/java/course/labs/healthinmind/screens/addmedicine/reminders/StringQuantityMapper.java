@@ -35,8 +35,8 @@ public class StringQuantityMapper {
         return context.getString(id);
     }
 
-    public double getValue(String key){
-        return Objects.requireNonNull(quantityMap.get(key)).getValue();
+    public Quantity getValue(String key){
+        return quantityMap.get(key);
     }
 
     public List<String> getStringArray(){

@@ -1,4 +1,4 @@
-package course.labs.healthinmind.screens;
+package course.labs.healthinmind.screens.medicineslist;
 
 import course.labs.healthinmind.screens.views.BaseObservableViewMvc;
 

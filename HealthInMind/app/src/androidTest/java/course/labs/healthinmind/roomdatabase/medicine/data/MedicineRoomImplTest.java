@@ -28,7 +28,7 @@ public class MedicineRoomImplTest extends BaseRoomTest {
             long insertedMedicineId = medicineDao.insert(paracetamol);
             MedicineRoomImpl createdMedicine = medicineDao.fetchById(insertedMedicineId);
             assertEquals(createdMedicine.getMedicineId(), insertedMedicineId);
-            assertNotNull(createdMedicine.getInstructions());
+            assertNotNull(createdMedicine.instructions);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -10,6 +10,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
+import course.labs.healthinmind.common.Form;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
 import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
@@ -47,38 +48,10 @@ public class AddMedicineActivity
         super.onStart();
     }
 
+
     @Override
-    public void onSaveClicked(String medicineName, String form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, double quantityToTake, List<LocalTime> takingTimes) {
-        Medicine medicine;
-        if(medicineHasNoEndDate){
-            medicine = medicineFactory.createMedicineThatDoesNotEnd(
-                    medicineName,
-                    dosage,
-                    form,
-                    takingTimes.size(),
-                    refillQuantity,
-                    refillReminder,
-                    startDate,
-                    quantityToTake,
-                    instructions,
-                    takingTimes
-            );
-        }else {
-            medicine = medicineFactory.createMedicineThatEnds(
-                    medicineName,
-                    dosage,
-                    form,
-                    takingTimes.size(),
-                    refillQuantity,
-                    refillReminder,
-                    startDate,
-                    endDate,
-                    quantityToTake,
-                    instructions,
-                    takingTimes
-            );
-        }
-        addMedicineUseCase.addMedicine(medicine);
+    public void onSaveClicked(String medicineName, Form form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, List<ReminderDto> reminderDtoList) {
+
     }
 
     @Override

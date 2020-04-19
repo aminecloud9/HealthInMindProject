@@ -8,6 +8,9 @@ import androidx.room.TypeConverter;
 import java.time.LocalTime;
 import java.util.Date;
 
+import course.labs.healthinmind.common.Form;
+import course.labs.healthinmind.common.Quantity;
+
 public class Converters {
 
     @TypeConverter
@@ -36,6 +39,48 @@ public class Converters {
             return null;
         } else {
             return time.toString();
+        }
+    }
+
+    @TypeConverter
+    public static String toQuantityString(Quantity quantity){
+        return quantity.getString();
+    }
+
+    @TypeConverter
+    public static Quantity toQuantity(String quantity){
+
+        switch (quantity){
+            case "QUARTER":
+                return Quantity.QUARTER;
+            case "HALF" :
+                return Quantity.HALF;
+            case "ONE_AND_QUARTER" :
+                return Quantity.ONE_AND_QUARTER;
+            case "ONE" :
+                return Quantity.ONE;
+            case "ONE_AND_HALF" :
+                return Quantity.ONE_AND_HALF;
+            case "ONE_AND_THREE_QUARTERS" :
+                return Quantity.ONE_AND_TREE_QUARTERS;
+            case "TWO" :
+                return Quantity.TWO;
+            default:
+                return null;
+        }
+    }
+
+    @TypeConverter
+    public static String toFormString(Form form){
+        return form.getValue();
+    }
+
+    @TypeConverter
+    public static Form toForm(String form){
+        switch (form){
+            case "Pill" : return Form.PILL;
+            case "Liquid" : return Form.LIQUID;
+            default: return null;
         }
     }
 }

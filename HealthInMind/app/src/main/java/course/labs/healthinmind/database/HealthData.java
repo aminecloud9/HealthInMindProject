@@ -16,8 +16,10 @@ import course.labs.healthinmind.medecine.data.roomimplementation.MedicineDao;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
+import course.labs.healthinmind.remindmedicine.RemindMedicineDao;
+import course.labs.healthinmind.remindmedicine.RemindMedicineRoomImpl;
 
-@Database(entities = {MedicineRoomImpl.class, RemindMedicine.class, ReminderRoomImpl.class}, version = 1)
+@Database(entities = {MedicineRoomImpl.class, RemindMedicineRoomImpl.class, ReminderRoomImpl.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class HealthData extends RoomDatabase {
     private static HealthData instance;

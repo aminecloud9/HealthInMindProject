@@ -23,20 +23,7 @@ public class MedicineFactoryRoomImpl implements MedicineFactory {
                                            double quantityToTake,
                                            String instructions,
                                            List<LocalTime> takingTimes) {
-        MedicineRoomImpl medicine = new MedicineRoomImpl(
-                name,
-                form,
-                dosage,
-                frequency,
-                refillQuantity,
-                toBeRemindedToRefill,
-                startingDate,
-                false,
-                endingDate,
-                instructions,
-                quantityToTake);
-        List<ReminderRoomImpl> reminders = createReminders(takingTimes);
-        return new MedicineImpl(medicine,reminders);
+       return null;
     }
 
     @Override
@@ -51,19 +38,7 @@ public class MedicineFactoryRoomImpl implements MedicineFactory {
             double quantityToTake,
             String instructions,
             List<LocalTime> takingTimes) {
-        MedicineRoomImpl medicine = new MedicineRoomImpl(name,
-                form,
-                dosage,
-                frequency,
-                refillQuantity,
-                toBeRemindedToRefill,
-                startingDate,
-                true,
-                null,
-                instructions,
-                quantityToTake);
-        List<ReminderRoomImpl> reminders = createReminders(takingTimes);
-        return new MedicineImpl(medicine,reminders);
+        return null;
     }
 
     private List<ReminderRoomImpl> createReminders(List<LocalTime> takingTimes){

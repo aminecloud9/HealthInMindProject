@@ -14,7 +14,7 @@ public class MedicineRepositoryImpl implements MedicineRepository {
     }
 
     @Override
-    public Medicine getMedicine(int id) {
+    public Medicine getMedicine(long id) {
         return medicinesLocalProvider.getMedicine(id);
     }
 

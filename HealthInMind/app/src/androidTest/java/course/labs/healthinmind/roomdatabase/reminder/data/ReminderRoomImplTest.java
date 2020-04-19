@@ -33,8 +33,8 @@ public class ReminderRoomImplTest extends BaseRoomTest {
         assertFalse(remindersId.isEmpty());
         assertEquals(reminders.size(),remindersId.size());
         int reminderToBeFetchedIndex = ((new Random()).nextInt()) % reminders.size();
-        ReminderRoomImpl fetchedReminder = reminderDao.fetchByTime(reminders.get(reminderToBeFetchedIndex).getTime());
-        assertEquals(reminders.get(reminderToBeFetchedIndex).getTime(),fetchedReminder.getTime());
+        ReminderRoomImpl fetchedReminder = reminderDao.fetchByTime(reminders.get(reminderToBeFetchedIndex).time);
+        assertEquals(reminders.get(reminderToBeFetchedIndex).time,fetchedReminder.time);
     }
 
 

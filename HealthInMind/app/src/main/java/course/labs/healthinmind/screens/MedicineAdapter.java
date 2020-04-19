@@ -32,10 +32,10 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
     }
 
     private void bindInfos(MedicineHolder holder,Medicine currentMedicine) {
-        holder.medicineName.setText(currentMedicine.getMedicineName());
-        holder.medicineDosage.setText(currentMedicine.getDosage());
-        holder.medicineFrequency.setText(currentMedicine.getFrequency());
-        holder.medicineInstructions.setText(currentMedicine.getInstructions());
+        holder.medicineName.setText(currentMedicine.medicineName);
+        holder.medicineDosage.setText(currentMedicine.dosage);
+//        holder.medicineFrequency.setText(currentMedicine.getFrequency());
+        holder.medicineInstructions.setText(currentMedicine.instructions);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package course.labs.healthinmind.screens;
+package course.labs.healthinmind.screens.medicinedetails;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.R;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
-import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
 public class MedicineDetailsViewMvc extends BaseViewMvc {
@@ -24,16 +23,16 @@ public class MedicineDetailsViewMvc extends BaseViewMvc {
     private Switch medicineHasNoEndDateSwitch;
 
     public void bindMedicineInfos(Medicine medicine){
-        dosage.setText(medicine.getDosage());
-        form.setText(medicine.getForm());
-        frequency.setText(String.valueOf(medicine.getFrequency()));
-        refillQuantity.setText(medicine.getRefillQuantity());
-        refillReminderSwitch.setChecked(medicine.isRefillReminder());
-        medicineStartDate.setText(medicine.getStartDate().toString());
+        dosage.setText(medicine.dosage);
+        form.setText(medicine.form.getValue());
+//        frequency.setText(String.valueOf(medicine.getFrequency()));
+        refillQuantity.setText(medicine.refillQuantity);
+        refillReminderSwitch.setChecked(medicine.toBeRemindedToRefill);
+        medicineStartDate.setText(medicine.startDate.toString());
         medicineEndDate.setText(medicine.getEndDate().toString());
-        instructions.setText(medicine.getInstructions());
-        medicineHasNoEndDateSwitch.setChecked(medicine.isMedicineHasNoEndDate());
-        if (medicine.isMedicineHasNoEndDate()){
+        instructions.setText(medicine.instructions);
+        medicineHasNoEndDateSwitch.setChecked(medicine.isPermanent);
+        if (medicine.isPermanent){
             medicineEndDate.setText("This medicine can't be stopped");
         }
         else {

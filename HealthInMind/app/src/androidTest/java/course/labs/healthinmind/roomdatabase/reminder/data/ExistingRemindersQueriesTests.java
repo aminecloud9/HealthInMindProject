@@ -30,14 +30,14 @@ public class ExistingRemindersQueriesTests extends BaseRoomTest {
         List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(takingTimes);
         Assert.assertEquals(takingTimes.size(), existingReminders.size());
         for (ReminderRoomImpl existingReminder : existingReminders){
-            Assert.assertTrue(takingTimes.contains(existingReminder.getTime()));
+            Assert.assertTrue(takingTimes.contains(existingReminder.time));
         }
     }
 
     private List<LocalTime> getTakingTimes(List<ReminderRoomImpl> reminders) {
         List<LocalTime> takingTimes = new ArrayList<>();
         for (ReminderRoomImpl reminder : reminders){
-            takingTimes.add(reminder.getTime());
+            takingTimes.add(reminder.time);
         }
 
         return takingTimes;

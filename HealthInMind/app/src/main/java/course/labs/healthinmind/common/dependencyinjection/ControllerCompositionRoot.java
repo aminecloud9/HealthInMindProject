@@ -2,7 +2,6 @@ package course.labs.healthinmind.common.dependencyinjection;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -33,7 +32,11 @@ public class ControllerCompositionRoot {
     }
 
     public AddMedicineUseCase getAddMedicineUseCase(){
-        return new AddMedicineUseCase(mCompositionRoot.getMedicineRepository());
+        return new AddMedicineUseCase(
+                mCompositionRoot.getMedicineRepository(),
+                mCompositionRoot.getRemindersRepository(),
+                mCompositionRoot.getRemindMedicinesRepository()
+                );
     }
 
     public ViewMvcFactory getViewMvcFactory() {

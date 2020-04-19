@@ -29,7 +29,7 @@ public class ReminderView extends BaseObservableViewMvc <ReminderView.Listener> 
         quantityToTake = findViewById(R.id.tv_quantity_reminder_item);
     }
 
-    void bindReminder(ReminderDto reminderDto) {
+    public void bindReminder(ReminderDto reminderDto) {
         reminderTime.setText(reminderDto.getTime().toString());
         quantityToTake.setText(getContext().getString(R.string.quantity_to_take, String.valueOf(reminderDto.quantityToTake)));
     }

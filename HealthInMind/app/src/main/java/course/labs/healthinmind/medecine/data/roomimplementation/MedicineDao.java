@@ -8,12 +8,11 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import course.labs.healthinmind.medecine.data.abstractions.Medicine;
-import course.labs.healthinmind.medecine.data.roomimplementation.MedicineImpl;
-import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
+import course.labs.healthinmind.remindmedicine.MedicineImpl;
 
 @Dao
 public interface MedicineDao {
+    @Transaction
     @Insert
     long insert(MedicineRoomImpl medicineRoomImpl);
 
@@ -29,14 +28,6 @@ public interface MedicineDao {
     @Query("DELETE FROM medicine_table")
     void deleteAllMedicines();
 
-    @Query("SELECT * FROM medicine_table ORDER By frequency DESC")
-    List<MedicineRoomImpl> getAllMedicines();
-
-    @Transaction
-    @Query("SELECT * FROM medicine_table")
-    List<MedicineImpl> fetchMedicinesWithReminders();
-
-    @Query("SELECT * FROM medicine_table WHERE medicineId = :medicineId")
-    MedicineImpl fetchMedicineWithItsReminders(long medicineId);
-
+    @Query("SELECT * from medicine_table")
+    List<MedicineRoomImpl> getAllMedcines();
 }

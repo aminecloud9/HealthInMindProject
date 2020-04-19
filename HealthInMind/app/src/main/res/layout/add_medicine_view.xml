@@ -219,19 +219,27 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_medicine_reminders_add_view"
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recycler_medicine_reminders_add_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            tools:listitem="@layout/et_reminder_item"-->
+<!--            >-->
+
+<!--&lt;!&ndash;            <Spinner&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_alignTop="@+id/recycler_medicine_reminders_add_view"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_alignParentRight="true" />&ndash;&gt;-->
+<!--        </androidx.recyclerview.widget.RecyclerView>-->
+
+        <LinearLayout
+            android:id="@+id/reminders_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/et_reminder_item"
-            >
+            android:orientation="vertical">
 
-<!--            <Spinner-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignTop="@+id/recycler_medicine_reminders_add_view"-->
-<!--                android:layout_alignParentRight="true" />-->
-        </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
 
         <Button
             android:id="@+id/save_medicine_button_id_add_view"

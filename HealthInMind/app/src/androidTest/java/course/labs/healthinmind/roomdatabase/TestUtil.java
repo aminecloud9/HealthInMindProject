@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import course.labs.healthinmind.common.Form;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
@@ -50,19 +51,21 @@ public class TestUtil {
     public static MedicineRoomImpl createMedicine(String name) throws ParseException {
         return new MedicineRoomImpl(
                 name,
-                "form",
                 250,
-                2,
-                40,
+                Form.PILL,
+                20,
+                false,
                 true,
-                new Date(),false, (new SimpleDateFormat("dd/MM/yyyy")).parse("20/12/2020"),"instructions",1);
+                new Date(),
+                "instructions"
+                );
 
     }
 
     public static List<LocalTime> getTakingTimes(List<ReminderRoomImpl> reminders) {
         List<LocalTime> takingTimes = new ArrayList<>();
         for (ReminderRoomImpl reminder : reminders){
-            takingTimes.add(reminder.getTime());
+            takingTimes.add(reminder.time);
         }
 
         return takingTimes;

@@ -10,41 +10,31 @@ import java.time.LocalTime;
 import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 
 @Entity(tableName = "reminders")
-public class ReminderRoomImpl implements Reminder {
+public class ReminderRoomImpl extends Reminder {
     @PrimaryKey(autoGenerate = true)
-    private long reminderId;
-    private LocalTime time;
+    public long reminderId;
 
     public ReminderRoomImpl(long reminderId, LocalTime time) {
-        this.time = time;
+        super(time);
         this.reminderId = reminderId;
     }
 
     @Ignore
     public ReminderRoomImpl(LocalTime takingTime) {
-        this.time = takingTime;
+        super(takingTime);
     }
 
-    @Override
-    public long getReminderId() {
-        return reminderId;
-    }
-
-    @Override
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
 
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj != null) {
-            return time.equals(((ReminderRoomImpl)obj).getTime());
+            return time.equals(((ReminderRoomImpl)obj).time);
         }else {
             return false;
         }
+    }
+
+    public long getReminderId() {
+        return reminderId;
     }
 }
