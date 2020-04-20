@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Switch;
 
 import androidx.annotation.Nullable;
@@ -20,11 +21,14 @@ import course.labs.healthinmind.screens.addmedicine.reminders.ReminderDto;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderView;
 import course.labs.healthinmind.screens.views.BaseObservableViewMvc;
 
-public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicineViewListener> implements AddMedicine{
+public class AddMedicineViewMvc
+        extends BaseObservableViewMvc<AddMedicineViewListener>
+        implements AddMedicine{
 
 
 
     private List<ReminderDto> reminders = new ArrayList<>();
+    private List<ReminderView> reminderViews = new ArrayList<>();
     private Form selectedForm;
 
     private EditText etName;
@@ -33,7 +37,7 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicineViewLis
     private EditText etMedicineStartDate;
     private EditText etMedicineEndDate;
     private EditText etInstructions;
-
+    private Spinner selectFormSpinner;
     private Button saveButton;
     private Switch refillReminderSwitch;
     private Switch medicineHasNoEndDateSwitch;
@@ -45,14 +49,14 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicineViewLis
     public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         this.viewMvcFactory = viewMvcFactory;
         setRootView(layoutInflater.inflate(R.layout.add_medicine_view, parent, false));
-        setUpComponents(viewMvcFactory);
+        setUpComponents();
         setUpSaveButtonClick();
         setUpAddReminderClick();
 
 
     }
 
-    private void setUpComponents(ViewMvcFactory viewMvcFactory) {
+    private void setUpComponents() {
         remindersContainer = findViewById(R.id.reminders_container);
         etName = findViewById(R.id.medicine_name_edit_text_id_add_view);
         etDosage = findViewById(R.id.dosage_edit_text_id_add_view);
@@ -65,6 +69,11 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicineViewLis
         inflateCalenderSetDateFrom(etMedicineEndDate);
         saveButton = findViewById(R.id.save_medicine_button_id_add_view);
         addReminderButton = findViewById(R.id.btn_add_reminder);
+        setUpFormsSpinner();
+    }
+
+    private void setUpFormsSpinner() {
+
     }
 
 
@@ -99,6 +108,11 @@ public class AddMedicineViewMvc extends BaseObservableViewMvc<AddMedicineViewLis
         ReminderView reminderView = viewMvcFactory.getReminderView(remindersContainer);
         reminders.add(reminderDto);
         reminderView.bindReminder(reminderDto);
+        reminderViews.add(reminderView);
         remindersContainer.addView(reminderView.getRootView());
+    }
+
+    public void updateReminder(ReminderDto reminderDto, int position){
+        reminderViews.get(position).bindReminder(reminderDto);
     }
 }
