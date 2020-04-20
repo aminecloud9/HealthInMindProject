@@ -12,6 +12,7 @@ public abstract class Medicine {
     public final boolean toBeRemindedToRefill;
     public final boolean isPermanent;
     public final Date startDate;
+    public final Date endDate;
     public final String instructions;
 
     public abstract long getMedicineId();
@@ -23,7 +24,7 @@ public abstract class Medicine {
                        boolean toBeRemindedToRefill,
                        boolean isPermanent,
                        Date startDate,
-                       String instructions) {
+                       Date endDate, String instructions) {
         this.medicineName = medicineName;
         this.dosage = dosage;
         this.form = form;
@@ -31,23 +32,12 @@ public abstract class Medicine {
         this.toBeRemindedToRefill = toBeRemindedToRefill;
         this.isPermanent = isPermanent;
         this.startDate = startDate;
+        this.endDate = endDate;
         this.instructions = instructions;
     }
 
 
-    public abstract Date getEndDate();
 
 
-//    public abstract Builder getBuilder();
-//    interface Builder{
-//        void setMedicineName(String medicineName);
-//        void setDosage(int dosage);
-//        void setForm(Form form);
-//        void setRefillQuantity(int refillQuantity);
-//        void toBeRemindedToRefill(boolean toBeReminded);
-//        void isPermanent(boolean isPermanent);
-//        void setStartingDate(Date startingDate);
-//        void addEndingDate(Date endingDate);
-//        void setInstructions(String instructions);
-//    }
+
 }

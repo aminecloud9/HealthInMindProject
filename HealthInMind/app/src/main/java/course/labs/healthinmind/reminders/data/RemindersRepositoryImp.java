@@ -19,7 +19,7 @@ public class RemindersRepositoryImp implements RemindersRepository {
     }
 
     @Override
-    public void insertNewRemindersOnly(List<LocalTime> takingTimes) {
-        remindersDataSource.insertNewRemindersOnly(takingTimes);
+    public List<Long> insertNewRemindersOnly(List<LocalTime> takingTimes) {
+        return remindersDataSource.insertNewRemindersOnly(takingTimes);
     }
 }

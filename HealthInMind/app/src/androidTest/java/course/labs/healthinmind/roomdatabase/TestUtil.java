@@ -29,6 +29,7 @@ public class TestUtil {
             add(new ReminderRoomImpl(LocalTime.of(20,0)));
         }
     };
+    public static int NUMBER_OF_AVAILABLE_REMINDERS = reminders.size();
 
     public static List<ReminderRoomImpl> getReminders(){
         return reminders;
@@ -56,6 +57,7 @@ public class TestUtil {
                 20,
                 false,
                 true,
+                new Date(),
                 new Date(),
                 "instructions"
                 );

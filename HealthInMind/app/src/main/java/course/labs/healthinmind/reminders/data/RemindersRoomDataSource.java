@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import course.labs.healthinmind.database.HealthData;
-import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
@@ -17,10 +16,10 @@ public class RemindersRoomDataSource implements RemindersDataSource {
     }
 
     @Override
-    public void insertNewRemindersOnly(List<LocalTime> takingTimes) {
+    public List<Long> insertNewRemindersOnly(List<LocalTime> takingTimes) {
         List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(takingTimes);
         List<ReminderRoomImpl> newReminders = filterReminders(takingTimes, existingReminders);
-        reminderDao.insertReminders(newReminders);
+        return reminderDao.insertReminders(newReminders);
     }
 
     private List<ReminderRoomImpl> filterReminders(List<LocalTime> takingTimes, List<ReminderRoomImpl> existingReminders) {

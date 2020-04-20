@@ -6,14 +6,15 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
 import course.labs.healthinmind.common.Form;
+import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineBuilder;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
-import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
-import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
+import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineResponse;
+import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineUseCase;
+import course.labs.healthinmind.medecine.domain.addmedicineusecase.CreateMedicineRequest;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderDto;
 import course.labs.healthinmind.screens.commons.BaseActivity;
 
@@ -29,13 +30,11 @@ public class AddMedicineActivity
 
     private AddMedicineViewMvc view;
     private AddMedicineUseCase addMedicineUseCase;
-    private MedicineFactory medicineFactory;
     private AddReminderDialogController addReminderDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          addMedicineUseCase = getCompositionRoot().getAddMedicineUseCase();
-         medicineFactory = getCompositionRoot().getMedicineFactory();
         view = getCompositionRoot().
                 getViewMvcFactory().
                 getAddMedicineViewMvc(null);
@@ -51,7 +50,30 @@ public class AddMedicineActivity
 
     @Override
     public void onSaveClicked(String medicineName, Form form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, List<ReminderDto> reminderDtoList) {
+        MedicineBuilder builder = getCompositionRoot().getMedicineBuilder();
+        builder
+                .setMedicineName(medicineName)
+                .setDosage(dosage)
+                .setForm(form)
+                .setRefillQuantity(refillQuantity)
+                .setInstructions(instructions)
+                .isPermanent(medicineHasNoEndDate)
+                .toBeRemindedToRefill(refillReminder)
+                .setStartingDate(startDate);
+        if(!medicineHasNoEndDate){
+            builder.addEndingDate(endDate);
+        }
+        Medicine medicine = builder.create();
 
+        AddMedicineResponse response
+                = addMedicineUseCase
+                .addMedicine(new CreateMedicineRequest(medicine,reminderDtoList));
+        handleAddMedicineUseCaseResponse(response);
+
+    }
+
+    private void handleAddMedicineUseCaseResponse(AddMedicineResponse response) {
+        finish();
     }
 
     @Override

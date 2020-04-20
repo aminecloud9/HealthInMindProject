@@ -17,7 +17,7 @@ public interface RemindMedicineDao {
     void insert(RemindMedicineRoomImpl remindMedicineRoomImpl);
 
     @Insert
-    void insertRemindMedicines(List<RemindMedicineRoomImpl> remindMedicineRoomImpls);
+    List<Long> insertRemindMedicines(List<RemindMedicineRoomImpl> remindMedicineRoomImpls);
 
     @Query("SELECT reminderId FROM reminders WHERE time = :takingTime")
     Long fetchReminderByTime(LocalTime takingTime);
@@ -26,6 +26,7 @@ public interface RemindMedicineDao {
     @Query("SELECT * FROM medicine_table")
     List<MedicineImpl> fetchMedicinesWithReminders();
 
+    @Transaction
     @Query("SELECT * FROM medicine_table WHERE medicineId = :medicineId")
     MedicineImpl fetchMedicineWithItsReminders(long medicineId);
 }

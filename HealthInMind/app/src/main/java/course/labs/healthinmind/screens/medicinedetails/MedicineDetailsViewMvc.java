@@ -29,14 +29,14 @@ public class MedicineDetailsViewMvc extends BaseViewMvc {
         refillQuantity.setText(medicine.refillQuantity);
         refillReminderSwitch.setChecked(medicine.toBeRemindedToRefill);
         medicineStartDate.setText(medicine.startDate.toString());
-        medicineEndDate.setText(medicine.getEndDate().toString());
+        medicineEndDate.setText(medicine.endDate.toString());
         instructions.setText(medicine.instructions);
         medicineHasNoEndDateSwitch.setChecked(medicine.isPermanent);
         if (medicine.isPermanent){
             medicineEndDate.setText("This medicine can't be stopped");
         }
         else {
-            medicineEndDate.setText(medicine.getEndDate().toString());
+            medicineEndDate.setText(medicine.endDate.toString());
         }
     }
 

@@ -12,7 +12,7 @@ public class RemindMedicinesRepositoryImpl implements RemindMedicinesRepository 
     }
 
     @Override
-    public void createdRemindMedicines(long createdMedicineId, List<ReminderDto> reminderDtos) {
-        remindMedicineDataSource.createRemindMedicines(createdMedicineId,reminderDtos);
+    public List<Long> createdRemindMedicines(long createdMedicineId, List<ReminderDto> reminderDtos) {
+       return remindMedicineDataSource.createRemindMedicines(createdMedicineId,reminderDtos);
     }
 }

@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface RemindersDataSource {
 
-    void insertNewRemindersOnly(List<LocalTime> takingTimes);
+    List<Long> insertNewRemindersOnly(List<LocalTime> takingTimes);
 }

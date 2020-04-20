@@ -1,4 +1,4 @@
-package course.labs.healthinmind.medecine.domain;
+package course.labs.healthinmind.medecine.domain.addmedicineusecase;
 
 import java.util.List;
 

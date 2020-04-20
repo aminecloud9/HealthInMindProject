@@ -1,9 +1,7 @@
 package course.labs.healthinmind.remindmedicine;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import course.labs.healthinmind.database.HealthData;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderDto;
@@ -17,7 +15,7 @@ public class RemindMedicineRoomDataSource implements RemindMedicineDataSource{
     }
 
     @Override
-    public void createRemindMedicines(long createdMedicineId, List<ReminderDto> reminderDtos) {
+    public List<Long> createRemindMedicines(long createdMedicineId, List<ReminderDto> reminderDtos) {
         List<RemindMedicineRoomImpl> remindMedicines = new ArrayList<>();
 
         for (ReminderDto reminderDto : reminderDtos){
@@ -30,6 +28,6 @@ public class RemindMedicineRoomDataSource implements RemindMedicineDataSource{
                     )
             );
         }
-        remindMedicineDao.insertRemindMedicines(remindMedicines);
+        return remindMedicineDao.insertRemindMedicines(remindMedicines);
     }
 }

@@ -1,4 +1,4 @@
-package course.labs.healthinmind.medecine.domain;
+package course.labs.healthinmind.medecine.domain.addmedicineusecase;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -15,33 +15,57 @@ public class AddMedicineUseCase {
     private RemindersRepository remindersRepository;
     private RemindMedicinesRepository remindMedicinesRepository;
 
+    private AddMedicineResponse response;
+
     public AddMedicineUseCase(MedicineRepository medicineRepository, RemindersRepository remindersRepository, RemindMedicinesRepository remindMedicinesRepository) {
         this.medicineRepository = medicineRepository;
         this.remindersRepository = remindersRepository;
         this.remindMedicinesRepository = remindMedicinesRepository;
+
+        response = new AddMedicineResponse();
     }
 
-    public long addMedicine(CreateMedicineRequest createMedicineRequest){
+    public AddMedicineResponse addMedicine(CreateMedicineRequest createMedicineRequest){
         Medicine medicine = createMedicineRequest.medicine;
         List<ReminderDto> reminderDtos = createMedicineRequest.reminderDtoList;
+
+        validateRequest(medicine,reminderDtos);
+
         List<LocalTime> takingTimes =
                 reminderDtos.
                         stream().
                         map(ReminderDto::getTime).
                         collect(Collectors.toList());
         Long createdMedicineId = medicineRepository.createMedicine(medicine);
+
         createMedicineReminders(takingTimes);
         createRemindMedicine(createdMedicineId,reminderDtos);
 
-        return createdMedicineId;
+        return response;
+    }
+
+    private void validateRequest(Medicine medicine, List<ReminderDto> reminderDtos) {
+        if(!medicine.isPermanent && medicine.endDate == null){
+            response.addMessage("No permanent medicines must have an ending date");
+            response.setSuccessful(false);
+        }else if(medicine.isPermanent && medicine.endDate != null){
+            response.addMessage("Permanent medicines can't have and ending date");
+            response.setSuccessful(false);
+        }
+
+        if(reminderDtos.isEmpty()){
+            response.setSuccessful(false);
+            response.addMessage("Medicines must have at least one reminder");
+        }
     }
 
     private void createMedicineReminders(List<LocalTime> takingTimes) {
-        remindersRepository.insertNewRemindersOnly(takingTimes);
+       List<Long> insertedIds =  remindersRepository.insertNewRemindersOnly(takingTimes);
+
     }
 
     private void createRemindMedicine(long createdMedicineId, List<ReminderDto> reminderDtos) {
-        remindMedicinesRepository.createdRemindMedicines(createdMedicineId, reminderDtos);
+        List<Long> ids = remindMedicinesRepository.createdRemindMedicines(createdMedicineId, reminderDtos);
     }
 
 }

@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
-import course.labs.healthinmind.medecine.data.abstractions.MedicineFactory;
-import course.labs.healthinmind.medecine.data.roomimplementation.MedicineFactoryRoomImpl;
+import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineBuilder;
+import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineRoomImplBuilder;
+import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineUseCase;
 import course.labs.healthinmind.medecine.domain.ShowMedicineDetailsUseCase;
 import course.labs.healthinmind.screens.addmedicine.AddReminderDialogController;
 import course.labs.healthinmind.screens.ViewMvcFactory;
@@ -20,7 +20,6 @@ public class ControllerCompositionRoot {
 
     private final CompositionRoot mCompositionRoot;
     private final FragmentActivity mActivity;
-    private MedicineFactory medicineFactory;
 
     public ControllerCompositionRoot(CompositionRoot compositionRoot, FragmentActivity activity) {
         mCompositionRoot = compositionRoot;
@@ -60,13 +59,6 @@ public class ControllerCompositionRoot {
         return LayoutInflater.from(getContext());
     }
 
-    public MedicineFactory getMedicineFactory(){
-        if(medicineFactory == null){
-            medicineFactory = new MedicineFactoryRoomImpl();
-        }
-
-        return medicineFactory;
-    }
 
     public ScreensNavigator getScreensNavigator(){
         return new ScreensNavigator(getContext());
@@ -78,5 +70,9 @@ public class ControllerCompositionRoot {
 
     public AddReminderDialogController getAddReminderDialogController(){
         return new AddReminderDialogController(getStringQuantityMapper(), getViewMvcFactory());
+    }
+
+    public MedicineBuilder getMedicineBuilder(){
+        return new MedicineRoomImplBuilder();
     }
 }

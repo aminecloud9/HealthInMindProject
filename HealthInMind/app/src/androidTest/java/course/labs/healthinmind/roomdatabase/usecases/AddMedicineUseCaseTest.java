@@ -19,7 +19,6 @@ import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import course.labs.healthinmind.common.Quantity;
 import course.labs.healthinmind.common.dependencyinjection.CompositionRoot;
@@ -29,13 +28,10 @@ import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineRepository;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineDao;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
-import course.labs.healthinmind.medecine.domain.AddMedicineUseCase;
-import course.labs.healthinmind.medecine.domain.CreateMedicineRequest;
+import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineUseCase;
+import course.labs.healthinmind.medecine.domain.addmedicineusecase.CreateMedicineRequest;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
-import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
-import course.labs.healthinmind.remindmedicine.MedicineImpl;
 import course.labs.healthinmind.remindmedicine.RemindMedicineDao;
-import course.labs.healthinmind.roomdatabase.BaseRoomTest;
 import course.labs.healthinmind.roomdatabase.TestUtil;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderDto;
 
