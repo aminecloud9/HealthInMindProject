@@ -9,6 +9,7 @@ import course.labs.healthinmind.screens.addmedicine.AddMedicineViewMvc;
 import course.labs.healthinmind.screens.addmedicine.AddReminderDialogWindow;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderView;
 import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
+import course.labs.healthinmind.screens.home.EmptyListView;
 
 public class ViewMvcFactory {
 
@@ -28,5 +29,9 @@ public class ViewMvcFactory {
 
     public AddReminderDialogWindow getAddReminderDialogWindow(ViewGroup parent, StringQuantityMapper quantityMapper){
         return new AddReminderDialogWindow(mLayoutInflater,parent,quantityMapper);
+    }
+
+    public EmptyListView getEmptyListView(ViewGroup parent, String displayedMessage){
+        return new EmptyListView(mLayoutInflater,parent, displayedMessage);
     }
 }

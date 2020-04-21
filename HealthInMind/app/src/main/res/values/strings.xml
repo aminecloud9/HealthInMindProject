@@ -37,5 +37,8 @@
     <string name="one_and_three_quarters">One and three quarters</string>
     <string name="two">Two</string>
     <string name="cancel">Cancel</string>
+    <string name="no_data">NO DATA</string>
+    <string name="no_medicines">You don\'t have any medicines</string>
+    <string name="no_appointments">You don\'t have any appointments</string>
 
 </resources>

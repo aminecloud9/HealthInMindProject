@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import course.labs.healthinmind.screens.commons.BaseActivity;
 import course.labs.healthinmind.screens.commons.ScreensNavigator;
+import course.labs.healthinmind.screens.home.HomeViewImpl;
 
 public class MainActivity extends BaseActivity {
     private ScreensNavigator screensNavigator;
@@ -13,10 +14,13 @@ public class MainActivity extends BaseActivity {
         screensNavigator = getCompositionRoot().getScreensNavigator();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_medicine_view);
-        if(savedInstanceState == null){
-            screensNavigator.toAddMedicineActivity();
-        }
+        HomeViewImpl homeView = new HomeViewImpl(getLayoutInflater(),null,getCompositionRoot().getViewMvcFactory());
+        homeView.showEmptyMedicines();
+        homeView.showEmptyUpcomingAppointments();
+        setContentView(homeView.getRootView());
+//        if(savedInstanceState == null){
+//            screensNavigator.toAddMedicineActivity();
+//        }
 
 //        FloatingActionButton buttonAddMedicine = findViewById(R.id.button_add);
 //
