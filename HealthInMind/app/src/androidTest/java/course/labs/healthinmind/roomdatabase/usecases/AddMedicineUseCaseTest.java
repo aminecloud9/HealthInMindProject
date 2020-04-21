@@ -35,6 +35,9 @@ import course.labs.healthinmind.remindmedicine.RemindMedicineDao;
 import course.labs.healthinmind.roomdatabase.TestUtil;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderDto;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 @RunWith(AndroidJUnit4.class)
 public class AddMedicineUseCaseTest {
@@ -66,7 +69,9 @@ public class AddMedicineUseCaseTest {
         reminderDao = db.reminderDao();
         remindMedicineDao = db.remindMedicineDao();
         medicineRepository = compositionRoot.getMedicineRepository();
-        useCase = controllerCompositionRoot.getAddMedicineUseCase();
+        AddMedicineUseCase.AddMedicineUseCaseOutputPort outputPort = mock(AddMedicineUseCase.AddMedicineUseCaseOutputPort.class);
+
+        useCase = controllerCompositionRoot.getAddMedicineUseCase(outputPort);
 
     }
 
@@ -86,12 +91,6 @@ public class AddMedicineUseCaseTest {
                     }}
             );
 
-            Long createdMedicineId = useCase.addMedicine(request);
-            Medicine medicine = medicineRepository.getMedicine(createdMedicineId);
-            Assert.assertNotNull(medicine);
-            List<MedicineRoomImpl> medicineRooms = medicineDao.getAllMedcines();
-            Log.d("medicines", String.valueOf(medicineRooms.size()));
-            Log.d("createdMedicineId",createdMedicineId.toString());
 //            Assert.assertEquals(2,medicineImp.reminders.size());
 //            Assert.assertTrue(
 //                    medicineImp.reminders

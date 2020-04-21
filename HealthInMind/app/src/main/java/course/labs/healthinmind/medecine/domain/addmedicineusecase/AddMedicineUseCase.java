@@ -11,15 +11,23 @@ import course.labs.healthinmind.remindmedicine.RemindMedicinesRepository;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderDto;
 
 public class AddMedicineUseCase {
+    public interface AddMedicineUseCaseOutputPort{
+        void onSuccess(AddMedicineResponse response);
+        void onProgress();
+        void onFailure(AddMedicineResponse response);
+    }
+
     private MedicineRepository medicineRepository;
     private RemindersRepository remindersRepository;
+    private AddMedicineUseCaseOutputPort outputPort;
     private RemindMedicinesRepository remindMedicinesRepository;
 
     private AddMedicineResponse response;
 
-    public AddMedicineUseCase(MedicineRepository medicineRepository, RemindersRepository remindersRepository, RemindMedicinesRepository remindMedicinesRepository) {
+    public AddMedicineUseCase(MedicineRepository medicineRepository, RemindersRepository remindersRepository, AddMedicineUseCaseOutputPort outputPort, RemindMedicinesRepository remindMedicinesRepository) {
         this.medicineRepository = medicineRepository;
         this.remindersRepository = remindersRepository;
+        this.outputPort = outputPort;
         this.remindMedicinesRepository = remindMedicinesRepository;
 
         response = new AddMedicineResponse();
@@ -57,6 +65,10 @@ public class AddMedicineUseCase {
             response.setSuccessful(false);
             response.addMessage("Medicines must have at least one reminder");
         }
+
+        if (!response.isSuccessful()){
+            outputPort.onFailure(response);
+        }
     }
 
     private void createMedicineReminders(List<LocalTime> takingTimes) {
@@ -67,5 +79,7 @@ public class AddMedicineUseCase {
     private void createRemindMedicine(long createdMedicineId, List<ReminderDto> reminderDtos) {
         List<Long> ids = remindMedicinesRepository.createdRemindMedicines(createdMedicineId, reminderDtos);
     }
+
+
 
 }

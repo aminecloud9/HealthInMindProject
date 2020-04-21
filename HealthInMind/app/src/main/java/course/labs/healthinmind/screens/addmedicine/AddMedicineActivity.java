@@ -11,6 +11,7 @@ import java.util.List;
 
 import course.labs.healthinmind.common.Form;
 import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineBuilder;
+import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineCreationException;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineResponse;
 import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineUseCase;
@@ -21,7 +22,7 @@ import course.labs.healthinmind.screens.commons.BaseActivity;
 public class AddMedicineActivity
         extends BaseActivity
         implements AddMedicine.AddMedicineViewListener,
-        AddReminderDialogController.DialogControllerListener {
+        AddReminderDialogController.DialogControllerListener, AddMedicineUseCase.AddMedicineUseCaseOutputPort {
 
     public static void start(Context context){
         Intent intent = new Intent(context,AddMedicineActivity.class);
@@ -34,7 +35,7 @@ public class AddMedicineActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         addMedicineUseCase = getCompositionRoot().getAddMedicineUseCase();
+         addMedicineUseCase = getCompositionRoot().getAddMedicineUseCase(this);
         view = getCompositionRoot().
                 getViewMvcFactory().
                 getAddMedicineViewMvc(null);
@@ -69,7 +70,12 @@ public class AddMedicineActivity
         if(!medicineHasNoEndDate){
             builder.addEndingDate(endDate);
         }
-        Medicine medicine = builder.create();
+        Medicine medicine = null;
+        try {
+            medicine = builder.create();
+        } catch (MedicineCreationException e) {
+            e.printStackTrace();
+        }
 
         AddMedicineResponse response
                 = addMedicineUseCase
@@ -102,5 +108,20 @@ public class AddMedicineActivity
     @Override
     public void onCancel() {
         addReminderDialog.dismiss();
+    }
+
+    @Override
+    public void onSuccess(AddMedicineResponse response) {
+
+    }
+
+    @Override
+    public void onProgress() {
+
+    }
+
+    @Override
+    public void onFailure(AddMedicineResponse response) {
+
     }
 }

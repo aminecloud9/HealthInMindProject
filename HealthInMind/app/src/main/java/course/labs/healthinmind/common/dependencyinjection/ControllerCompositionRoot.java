@@ -30,11 +30,11 @@ public class ControllerCompositionRoot {
         return new ShowMedicineDetailsUseCase(mCompositionRoot.getMedicineRepository());
     }
 
-    public AddMedicineUseCase getAddMedicineUseCase(){
+    public AddMedicineUseCase getAddMedicineUseCase(AddMedicineUseCase.AddMedicineUseCaseOutputPort outputPort){
         return new AddMedicineUseCase(
                 mCompositionRoot.getMedicineRepository(),
                 mCompositionRoot.getRemindersRepository(),
-                mCompositionRoot.getRemindMedicinesRepository()
+                outputPort, mCompositionRoot.getRemindMedicinesRepository()
                 );
     }
 

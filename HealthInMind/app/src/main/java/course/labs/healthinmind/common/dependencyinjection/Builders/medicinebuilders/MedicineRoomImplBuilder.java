@@ -75,14 +75,29 @@ public class MedicineRoomImplBuilder implements MedicineBuilder{
     }
 
     @Override
-    public Medicine create() {
+    public Medicine create() throws MedicineCreationException {
+        if(isPermanent){
+            return new MedicineRoomImpl(
+                    medicineName,
+                    dosage,
+                    form,
+                    refillQuantity,
+                    toBeRemindedToRefill,
+                    true,
+                    startDate,
+                    null,
+                    instructions
+            );
+        } else if(endDate == null){
+            throw new MedicineCreationException("Permanent medicines must have ending date");
+        }
         return new MedicineRoomImpl(
                 medicineName,
                 dosage,
                 form,
                 refillQuantity,
                 toBeRemindedToRefill,
-                isPermanent,
+                false,
                 startDate,
                 endDate,
                 instructions

@@ -17,5 +17,5 @@ public interface MedicineBuilder {
         MedicineBuilder addEndingDate(Date endingDate);
         MedicineBuilder setInstructions(String instructions);
 
-        Medicine create();
+        Medicine create() throws MedicineCreationException;
 }
