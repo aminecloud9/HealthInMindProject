@@ -18,9 +18,9 @@ public class MainActivity extends BaseActivity {
         homeView.showEmptyMedicines();
         homeView.showEmptyUpcomingAppointments();
         setContentView(homeView.getRootView());
-//        if(savedInstanceState == null){
-//            screensNavigator.toAddMedicineActivity();
-//        }
+        if(savedInstanceState == null){
+            screensNavigator.toAddMedicineActivity();
+        }
 
 //        FloatingActionButton buttonAddMedicine = findViewById(R.id.button_add);
 //

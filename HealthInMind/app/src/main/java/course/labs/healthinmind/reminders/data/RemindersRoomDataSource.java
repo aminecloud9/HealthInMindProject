@@ -1,5 +1,7 @@
 package course.labs.healthinmind.reminders.data;
 
+import android.util.Log;
+
 import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +19,7 @@ public class RemindersRoomDataSource implements RemindersDataSource {
 
     @Override
     public List<Long> insertNewRemindersOnly(List<LocalTime> takingTimes) {
+        Log.i("AddMedicineProcess","insertNewRemindersOnly from RemindersRoomDataSource");
         List<ReminderRoomImpl> existingReminders = reminderDao.fetchAllRemindersOf(takingTimes);
         List<ReminderRoomImpl> newReminders = filterReminders(takingTimes, existingReminders);
         return reminderDao.insertReminders(newReminders);

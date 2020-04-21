@@ -1,7 +1,16 @@
 package course.labs.healthinmind.common;
 
 public enum Form {
-    PILL("Pill"), LIQUID("LIQUID");
+    PILL("Pill"),
+    LIQUID("LIQUID"),
+    TABLET("Tablet"),
+    CAPSULES("Capsules"),
+    TOPICAL_MEDICINES("Topical Medicines"),
+    SUPPOSITORIES("Suppositories"),
+    DROPS("Drops"),
+    INHALERS("Inhalers"),
+    INJECTIONS("Injections"),
+    IMPANTS_OR_PATCHES("Implants or patches");
 
     private String value;
 

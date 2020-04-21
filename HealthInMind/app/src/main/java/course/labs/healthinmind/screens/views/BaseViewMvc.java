@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
@@ -52,7 +53,7 @@ public abstract class BaseViewMvc implements ViewMvc {
     }
 
 
-    protected Date setTextToDate(EditText editText) {
+    protected Date setTextToDate(TextView editText) {
         Date date = new Date();
         try {
             date = getDateFormat().parse(setTextToString(editText));
@@ -67,7 +68,7 @@ public abstract class BaseViewMvc implements ViewMvc {
         return LocalTime.parse(setTextToString(editText));
     }
 
-    protected void updateLabel(EditText editText) {
+    protected void updateLabel(TextView editText) {
         editText.setText(getDateFormat().format(MY_CALENDAR.getTime()));
     }
 
@@ -75,14 +76,14 @@ public abstract class BaseViewMvc implements ViewMvc {
         return Integer.parseInt(setTextToString(editText));
     }
 
-    protected String setTextToString(EditText editText) {
+    protected String setTextToString(TextView editText) {
         return editText.getText().toString();
     }
 
 
-    protected void inflateCalenderSetDateFrom(EditText editTextDate) {
+    protected void inflateCalenderSetDateFrom(View view, TextView textView) {
 
-        editTextDate.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
                 @Override
@@ -91,7 +92,7 @@ public abstract class BaseViewMvc implements ViewMvc {
                     MY_CALENDAR.set(Calendar.YEAR, year);
                     MY_CALENDAR.set(Calendar.MONTH, monthOfYear);
                     MY_CALENDAR.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel(editTextDate);
+                    updateLabel(textView);
                 }
 
             };

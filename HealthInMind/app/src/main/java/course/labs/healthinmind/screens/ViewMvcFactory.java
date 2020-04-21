@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.screens.addmedicine.AddMedicineViewMvc;
 import course.labs.healthinmind.screens.addmedicine.AddReminderDialogWindow;
+import course.labs.healthinmind.screens.addmedicine.StringFormsMapper;
 import course.labs.healthinmind.screens.addmedicine.reminders.ReminderView;
 import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
 import course.labs.healthinmind.screens.home.EmptyListView;
@@ -19,8 +20,8 @@ public class ViewMvcFactory {
         mLayoutInflater = layoutInflater;
     }
 
-    public AddMedicineViewMvc getAddMedicineViewMvc(@Nullable ViewGroup parent){
-        return new AddMedicineViewMvc(mLayoutInflater,parent,this);
+    public AddMedicineViewMvc getAddMedicineViewMvc(@Nullable ViewGroup parent, StringFormsMapper stringFormsMapper){
+        return new AddMedicineViewMvc(mLayoutInflater,parent,stringFormsMapper,this);
     }
 
     public ReminderView getReminderView(@Nullable ViewGroup parent){

@@ -1,5 +1,7 @@
 package course.labs.healthinmind.remindmedicine;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class RemindMedicineRoomDataSource implements RemindMedicineDataSource{
                     )
             );
         }
+        Log.i("AddMedicineProcess","createRemindMedicines from RemindMedicineRoomDataSource");
         return remindMedicineDao.insertRemindMedicines(remindMedicines);
     }
 }

@@ -1,12 +1,17 @@
 package course.labs.healthinmind.screens.addmedicine;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -23,30 +28,33 @@ import course.labs.healthinmind.screens.views.BaseObservableViewMvc;
 
 public class AddMedicineViewMvc
         extends BaseObservableViewMvc<AddMedicineViewListener>
-        implements AddMedicine{
+        implements AddMedicine, AdapterView.OnItemSelectedListener {
 
 
 
     private List<ReminderDto> reminders = new ArrayList<>();
     private List<ReminderView> reminderViews = new ArrayList<>();
     private Form selectedForm;
+    private StringFormsMapper formsMapper;
 
     private EditText etName;
     private EditText etDosage;
     private EditText etRefillQuantity;
-    private EditText etMedicineStartDate;
-    private EditText etMedicineEndDate;
+    private TextView etMedicineStartDate;
+    private TextView etMedicineEndDate;
+    private ImageButton btnStatingDate;
+    private ImageButton btnEndingDate;
     private EditText etInstructions;
     private Spinner selectFormSpinner;
     private Button saveButton;
     private Switch refillReminderSwitch;
     private Switch medicineHasNoEndDateSwitch;
-    private AddMedicine.AddMedicineViewListener listener;
     private Button addReminderButton;
     private LinearLayout remindersContainer;
     private ViewMvcFactory viewMvcFactory;
 
-    public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
+    public AddMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, StringFormsMapper formsMapper, ViewMvcFactory viewMvcFactory) {
+        this.formsMapper = formsMapper;
         this.viewMvcFactory = viewMvcFactory;
         setRootView(layoutInflater.inflate(R.layout.add_medicine_view, parent, false));
         setUpComponents();
@@ -61,36 +69,61 @@ public class AddMedicineViewMvc
         etName = findViewById(R.id.medicine_name_edit_text_id_add_view);
         etDosage = findViewById(R.id.dosage_edit_text_id_add_view);
         etRefillQuantity = findViewById(R.id.refill_quantity_edit_text_id_add_view);
-        etMedicineStartDate = findViewById(R.id.medicine_start_date_edit_text_id_add_view);
-        etMedicineEndDate = findViewById(R.id.medicine_end_date_edit_text_id_add_view);
         etInstructions = findViewById(R.id.medicine_instruction_edit_text_id_add_view);
         refillReminderSwitch = findViewById(R.id.switch1_add_view);
         medicineHasNoEndDateSwitch = findViewById(R.id.switch2_add_view);
-        inflateCalenderSetDateFrom(etMedicineEndDate);
         saveButton = findViewById(R.id.save_medicine_button_id_add_view);
         addReminderButton = findViewById(R.id.btn_add_reminder);
+        setUpStartingDateInput();
+        setUpEndingDateInput();
         setUpFormsSpinner();
     }
 
-    private void setUpFormsSpinner() {
-
+    private void setUpEndingDateInput() {
+        etMedicineEndDate = findViewById(R.id.medicine_end_date_edit_text_id_add_view);
+        btnEndingDate = findViewById(R.id.btn_add_medicine_ending_date);
+        inflateCalenderSetDateFrom(btnEndingDate,etMedicineEndDate);
     }
 
+    private void setUpStartingDateInput() {
+        etMedicineStartDate = findViewById(R.id.medicine_start_date_edit_text_id_add_view);
+        btnStatingDate = findViewById(R.id.btn_add_medicine_starting_date);
+        inflateCalenderSetDateFrom(btnStatingDate,etMedicineStartDate);
+    }
 
-    private void setUpSaveButtonClick(){
-        saveButton.setOnClickListener(v -> listener.onSaveClicked(
-                setTextToString(etName),
-                selectedForm,
-                setTextToInt(etDosage),
-                setTextToInt(etRefillQuantity),
-                refillReminderSwitch.isActivated(),
-                medicineHasNoEndDateSwitch.isActivated(),
-                setTextToDate(etMedicineStartDate),
-                setTextToDate(etMedicineEndDate),
-                setTextToString(etInstructions),
-                reminders
-                )
+    private void setUpFormsSpinner() {
+        selectFormSpinner = findViewById(R.id.spinner_form_add_view);
+        List<String> quantities = formsMapper.getStringArray();
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getContext(),
+                R.layout.spinner_text_view,
+                quantities
         );
+
+        adapter.setDropDownViewResource(R.layout.spinner_text_view);
+        selectFormSpinner.setAdapter(adapter);
+        selectFormSpinner.setOnItemSelectedListener(this);    }
+
+
+    private void setUpSaveButtonClick() {
+        saveButton.setOnClickListener(v -> {
+            for (AddMedicineViewListener listener : getListeners()){
+                listener.onSaveClicked(
+                        setTextToString(etName),
+                        selectedForm,
+                        setTextToInt(etDosage),
+                        setTextToInt(etRefillQuantity),
+                        refillReminderSwitch.isActivated(),
+                        medicineHasNoEndDateSwitch.isActivated(),
+                        setTextToDate(etMedicineStartDate),
+                        setTextToDate(etMedicineEndDate),
+                        setTextToString(etInstructions),
+                        reminders
+                );
+            }
+        });
     }
 
     private void setUpAddReminderClick() {
@@ -116,5 +149,15 @@ public class AddMedicineViewMvc
 
     public void updateReminder(ReminderDto reminderDto, int position){
         reminderViews.get(position).bindReminder(reminderDto);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedForm = formsMapper.getValue((String) parent.getItemAtPosition(position));
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

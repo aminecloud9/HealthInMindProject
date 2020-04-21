@@ -1,5 +1,7 @@
 package course.labs.healthinmind.medecine.data.roomimplementation;
 
+import android.util.Log;
+
 import java.util.List;
 
 import course.labs.healthinmind.database.HealthData;
@@ -22,6 +24,7 @@ public class MedicineRoomDatabaseProvider implements MedicinesLocalProvider {
 
     @Override
     public Long createMedicine(Medicine medicine) {
+        Log.i("AddMedicineProcess","createMedicine from MedicineDataProvider");
         return medicineDao.insert((MedicineRoomImpl) medicine);
     }
 

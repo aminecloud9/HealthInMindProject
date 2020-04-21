@@ -58,22 +58,33 @@
 <!--            android:layout_alignBottom="@id/quantity_to_take_edit_text_add_view"-->
 <!--            android:layout_alignParentRight="true"-->
 <!--            android:layout_marginBottom="@dimen/Spinner_margin_bottom" />-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-<!--        <EditText-->
-<!--            android:id="@+id/form_edit_text_id_add_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:inputType="textAutoCorrect"-->
-<!--            android:layout_below="@+id/quantity_to_take_edit_text_add_view"-->
-<!--            android:hint="@string/form"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="@dimen/edit_text_edit_add_detail_size" />-->
+    <TextView
+        android:id="@+id/form_edit_text_id_add_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoCorrect"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/form"
+        android:textColor="@color/black"
+        android:textSize="@dimen/edit_text_edit_add_detail_size" />
 
-        <Spinner
-            android:id="@+id/spinner_form_add_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
+    <Spinner
+        android:id="@+id/spinner_form_add_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/Spinner_margin_bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 <!--        <EditText-->
@@ -134,16 +145,40 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/medicine_start_date_edit_text_id_add_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/medicine_start_date"
-            android:inputType="date"
-            android:textColor="@color/black"
-            android:textSize="@dimen/edit_text_edit_add_detail_size"
-            android:importantForAutofill="no" />
+    <TextView
+        android:id="@+id/medicine_start_date_edit_text_id_add_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no"
+        android:inputType="date"
+        android:text="@string/medicine_start_date"
+        android:textColor="@color/colorPaletteGray"
+        android:textSize="@dimen/edit_text_edit_add_detail_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/btn_add_medicine_starting_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_date_range"
+        android:background="@color/colorPaletteWhite"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Add Starting Date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -175,15 +210,38 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <EditText
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
             android:id="@+id/medicine_end_date_edit_text_id_add_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/medicine_end_date"
+            android:text="@string/medicine_end_date"
             android:inputType="date"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPaletteGray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:textSize="@dimen/edit_text_edit_add_detail_size"
             android:importantForAutofill="no" />
+
+        <ImageButton
+            android:id="@+id/btn_add_medicine_ending_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_date_range"
+            android:background="@color/colorPaletteWhite"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Add Starting Date" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <EditText

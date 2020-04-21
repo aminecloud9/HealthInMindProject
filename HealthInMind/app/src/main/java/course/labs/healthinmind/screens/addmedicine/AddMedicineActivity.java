@@ -3,6 +3,7 @@ package course.labs.healthinmind.screens.addmedicine;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -38,7 +39,7 @@ public class AddMedicineActivity
          addMedicineUseCase = getCompositionRoot().getAddMedicineUseCase(this);
         view = getCompositionRoot().
                 getViewMvcFactory().
-                getAddMedicineViewMvc(null);
+                getAddMedicineViewMvc(null,new StringFormsMapper(this));
 
         setContentView(view.getRootView());
     }
@@ -77,16 +78,10 @@ public class AddMedicineActivity
             e.printStackTrace();
         }
 
-        AddMedicineResponse response
-                = addMedicineUseCase
-                .addMedicine(new CreateMedicineRequest(medicine,reminderDtoList));
-        handleAddMedicineUseCaseResponse(response);
+      addMedicineUseCase.addMedicine(new CreateMedicineRequest(medicine,reminderDtoList));
 
     }
 
-    private void handleAddMedicineUseCaseResponse(AddMedicineResponse response) {
-        finish();
-    }
 
     @Override
     public void onAddReminderClick() {
@@ -112,7 +107,8 @@ public class AddMedicineActivity
 
     @Override
     public void onSuccess(AddMedicineResponse response) {
-
+        Log.i("AddMedicineProcess","medicine added");
+        finish();
     }
 
     @Override
@@ -122,6 +118,6 @@ public class AddMedicineActivity
 
     @Override
     public void onFailure(AddMedicineResponse response) {
-
+        Log.i("AddMedicineProcess","failed to add medicine");
     }
 }

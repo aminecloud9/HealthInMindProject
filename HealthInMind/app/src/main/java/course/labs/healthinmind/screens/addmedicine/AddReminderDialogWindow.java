@@ -28,9 +28,7 @@ public  class AddReminderDialogWindow extends
     }
     private NumberPicker hour;
     private NumberPicker minute;
-    private Spinner quantityToTake;
-    private Button validateButton;
-    private Button cancelButton;
+
 
 
     private String selectedItem;
@@ -56,10 +54,10 @@ public  class AddReminderDialogWindow extends
 
 
     private void setQuantityToTakeSpinner() {
+        Spinner quantityToTake;
         quantityToTake = findViewById(R.id.spnr_reminder_quantity);
         List<String> quantities = quantityMapper.getStringArray();
 
-        quantities.add(0, getString(R.string.quantity_hint));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getContext(),
@@ -83,6 +81,7 @@ public  class AddReminderDialogWindow extends
     }
 
     private void setUpValidateButtonClick() {
+        Button validateButton;
         validateButton = findViewById(R.id.btn_validate_reminder);
         validateButton.setOnClickListener(v -> {
             for (AddReminderDialogListener listener : getListeners()){
@@ -92,6 +91,7 @@ public  class AddReminderDialogWindow extends
     }
 
     private void setUpCancelButton() {
+        Button cancelButton;
         cancelButton = findViewById(R.id.btn_cancel_reminder);
         cancelButton.setOnClickListener(v ->{
             for (AddReminderDialogListener listener : getListeners()){

@@ -33,7 +33,7 @@ public class AddMedicineUseCase {
         response = new AddMedicineResponse();
     }
 
-    public AddMedicineResponse addMedicine(CreateMedicineRequest createMedicineRequest){
+    public void addMedicine(CreateMedicineRequest createMedicineRequest){
         Medicine medicine = createMedicineRequest.medicine;
         List<ReminderDto> reminderDtos = createMedicineRequest.reminderDtoList;
 
@@ -49,7 +49,6 @@ public class AddMedicineUseCase {
         createMedicineReminders(takingTimes);
         createRemindMedicine(createdMedicineId,reminderDtos);
 
-        return response;
     }
 
     private void validateRequest(Medicine medicine, List<ReminderDto> reminderDtos) {
