@@ -95,13 +95,15 @@ public class AddMedicineViewMvc
 
     private void setUpAddReminderClick() {
         addReminderButton.setOnClickListener(view -> {
-            listener.onAddReminderClick();
+            for(AddMedicineViewListener listener : getListeners()){
+                listener.onAddReminderClick();
+            }
         });
     }
 
-    public void setListener(AddMedicineViewListener listener){
-        this.listener = listener;
-    }
+//    public void setListener(AddMedicineViewListener listener){
+//        this.listener = listener;
+//    }
 
     @Override
     public void addReminder(ReminderDto reminderDto) {

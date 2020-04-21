@@ -38,15 +38,21 @@ public class AddMedicineActivity
         view = getCompositionRoot().
                 getViewMvcFactory().
                 getAddMedicineViewMvc(null);
-        view.setListener(this);
+
         setContentView(view.getRootView());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        view.registerListener(this);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        view.unregisterListener(this);
+    }
 
     @Override
     public void onSaveClicked(String medicineName, Form form, int dosage, int refillQuantity, boolean refillReminder, boolean medicineHasNoEndDate, Date startDate, Date endDate, String instructions, List<ReminderDto> reminderDtoList) {
