@@ -6,8 +6,12 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 import course.labs.healthinmind.R;
 import course.labs.healthinmind.screens.ViewMvcFactory;
+import course.labs.healthinmind.screens.home.homemedicineslist.HomeMedicineDto;
+import course.labs.healthinmind.screens.home.homemedicineslist.HomeMedicinesListViewMvc;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
 public class HomeViewImpl extends BaseViewMvc implements HomeView{
@@ -30,8 +34,11 @@ public class HomeViewImpl extends BaseViewMvc implements HomeView{
     }
 
     @Override
-    public void showMedicinesList() {
-
+    public void showMedicinesList(List<HomeMedicineDto> medicines) {
+        HomeMedicinesListViewMvc medicinesListViewMvc = viewMvcFactory.getHomeMedicinesListViewMvc(flMedicinesContainer);
+        medicinesListViewMvc.setMedicines(medicines);
+        flMedicinesContainer.removeAllViews();
+        flMedicinesContainer.addView(medicinesListViewMvc.getRootView());
     }
 
     @Override

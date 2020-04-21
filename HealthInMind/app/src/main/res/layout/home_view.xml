@@ -7,9 +7,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <TextView
+        android:id="@+id/today_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/today_s_medicines"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/home_text_margin"
+        android:textSize="@dimen/home_tiles_text_size" />
     <FrameLayout
         android:id="@+id/medicines_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,11 +33,21 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <TextView
+    android:id="@+id/upcoming_appointments_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/guideline"
+    android:text="@string/upcoming_appointments"
+        android:layout_marginStart="@dimen/home_text_margin"
+        android:layout_marginTop="@dimen/home_text_margin"
+    android:textSize="@dimen/home_tiles_text_size" />
+
     <FrameLayout
         android:id="@+id/appointments_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/upcoming_appointments_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
