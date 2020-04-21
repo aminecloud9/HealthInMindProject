@@ -13,7 +13,9 @@ import course.labs.healthinmind.screens.ViewMvcFactory;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
 public class HomeMedicinesListViewMvc extends BaseViewMvc {
-        HomeMedicinesAdapter adapter;
+
+    private HomeMedicinesAdapter adapter;
+
     public HomeMedicinesListViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory factory) {
         setRootView(layoutInflater.inflate(R.layout.items_list,parent,false));
         RecyclerView recyclerView = findViewById(R.id.generic_recycler);
