@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddMedicineResponse {
-    private boolean successful ;
+    private boolean successful = true;
     private List<String> messages = new ArrayList<>();
 
     public void setSuccessful(boolean successful) {

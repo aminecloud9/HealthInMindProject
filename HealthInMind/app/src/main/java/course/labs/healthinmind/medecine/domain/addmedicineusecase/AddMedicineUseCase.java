@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import course.labs.healthinmind.common.AppExecutors;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineRepository;
 import course.labs.healthinmind.reminders.data.abstractions.RemindersRepository;
@@ -44,12 +45,18 @@ public class AddMedicineUseCase {
                         stream().
                         map(ReminderDto::getTime).
                         collect(Collectors.toList());
-        Long createdMedicineId = medicineRepository.createMedicine(medicine);
 
-        createMedicineReminders(takingTimes);
-        createRemindMedicine(createdMedicineId,reminderDtos);
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            Long createdMedicineId = medicineRepository.createMedicine(medicine);
+
+            createMedicineReminders(takingTimes);
+            createRemindMedicine(createdMedicineId,reminderDtos);
+            outputPort.onSuccess(response);
+        });
 
     }
+
+
 
     private void validateRequest(Medicine medicine, List<ReminderDto> reminderDtos) {
         if(!medicine.isPermanent && medicine.endDate == null){
