@@ -1,5 +1,7 @@
 package course.labs.healthinmind.roomdatabase.medicineimpl;
 
+import android.util.Log;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +15,12 @@ import java.util.List;
 import course.labs.healthinmind.common.Form;
 import course.labs.healthinmind.common.Quantity;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineDao;
+import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.medecine.domain.showtodaymedicine.UpcomingMedicine;
+import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderDao;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
+import course.labs.healthinmind.remindmedicine.MedicineImpl;
 import course.labs.healthinmind.remindmedicine.RemindMedicineDao;
 import course.labs.healthinmind.remindmedicine.RemindMedicineRoomDataSource;
 import course.labs.healthinmind.remindmedicine.RemindMedicineRoomImpl;
@@ -45,10 +50,13 @@ public class MedicineRoomDatabaseProviderTests extends BaseRoomTest {
     public void retrieveUpcomingMedicines(){
         givenASetOfMedicinesAndRemindersInTheDatabase();
 
-        List<UpcomingMedicine> medicines = medicineProvider.getUpcomingMedicines(LocalTime.now());
+        List<UpcomingMedicine> medicines = medicineProvider.getUpcomingMedicines(LocalTime.of(20,30));
 
         shouldRetrieveOnlyUpcomingMedicines(medicines);
+
+
     }
+
     private void givenASetOfMedicinesAndRemindersInTheDatabase() {
         try {
             long paracetamolId = medicineDao.insert(TestUtil.createMedicine("Paracetamol", Form.PILL));
@@ -63,10 +71,10 @@ public class MedicineRoomDatabaseProviderTests extends BaseRoomTest {
 
             remindMedicineDao.insertRemindMedicines(
               new ArrayList<RemindMedicineRoomImpl>(){{
-                  new RemindMedicineRoomImpl(paracetamolId,reminderIds.get(0),Quantity.TWO);
-                  new RemindMedicineRoomImpl(paracetamolId,reminderIds.get(2),Quantity.ONE);
-                  new RemindMedicineRoomImpl(insulinId,reminderIds.get(1),Quantity.ONE);
-                  new RemindMedicineRoomImpl(insulinId,reminderIds.get(3),Quantity.ONE);
+                 add( new RemindMedicineRoomImpl(paracetamolId,reminderIds.get(0),Quantity.TWO));
+                 add( new RemindMedicineRoomImpl(paracetamolId,reminderIds.get(2),Quantity.ONE));
+                  add(new RemindMedicineRoomImpl(insulinId,reminderIds.get(1),Quantity.ONE));
+                  add(new RemindMedicineRoomImpl(insulinId,reminderIds.get(3),Quantity.ONE));
               }}
             );
         } catch (ParseException e) {
@@ -77,6 +85,7 @@ public class MedicineRoomDatabaseProviderTests extends BaseRoomTest {
     private void shouldRetrieveOnlyUpcomingMedicines(List<UpcomingMedicine> medicines) {
         Assert.assertNotNull(medicines);
         Assert.assertFalse(medicines.isEmpty());
+        Assert.assertEquals(3,medicines.size());
     }
 
 

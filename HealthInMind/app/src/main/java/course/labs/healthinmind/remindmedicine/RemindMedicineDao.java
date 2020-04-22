@@ -32,7 +32,7 @@ public interface RemindMedicineDao {
     MedicineImpl fetchMedicineWithItsReminders(long medicineId);
 
     @Query("SELECT medicineName,dosage,form,takingQuantity,time FROM " +
-            "medicine_table join remind_medicines " +
+            "medicine_table JOIN remind_medicines " +
             "ON medicine_table.medicineId = remind_medicines.medicineId JOIN" +
             " reminders ON remind_medicines.reminderId = reminders.reminderId " +
             " WHERE reminders.time > :time")
