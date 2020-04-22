@@ -10,6 +10,8 @@ import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuil
 import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineRoomImplBuilder;
 import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineUseCase;
 import course.labs.healthinmind.medecine.domain.ShowMedicineDetailsUseCase;
+import course.labs.healthinmind.medecine.domain.showtodaymedicine.GetTodayUpcomingMedicines;
+import course.labs.healthinmind.medecine.domain.showtodaymedicine.GetTodayUpcomingMedicinesOutputPort;
 import course.labs.healthinmind.screens.addmedicine.AddReminderDialogController;
 import course.labs.healthinmind.screens.ViewMvcFactory;
 import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
@@ -74,5 +76,9 @@ public class ControllerCompositionRoot {
 
     public MedicineBuilder getMedicineBuilder(){
         return new MedicineRoomImplBuilder();
+    }
+
+    public GetTodayUpcomingMedicines getTodayUpcomingMedicinesUseCase(GetTodayUpcomingMedicinesOutputPort outputPort){
+        return new GetTodayUpcomingMedicines(outputPort,mCompositionRoot.getRemindMedicinesRepository());
     }
 }

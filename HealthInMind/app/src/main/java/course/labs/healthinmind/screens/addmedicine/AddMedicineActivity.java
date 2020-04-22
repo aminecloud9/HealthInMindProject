@@ -23,7 +23,8 @@ import course.labs.healthinmind.screens.commons.BaseActivity;
 public class AddMedicineActivity
         extends BaseActivity
         implements AddMedicine.AddMedicineViewListener,
-        AddReminderDialogController.DialogControllerListener, AddMedicineUseCase.AddMedicineUseCaseOutputPort {
+        AddReminderDialogController.DialogControllerListener,
+        AddMedicineUseCase.AddMedicineUseCaseOutputPort {
 
     public static void start(Context context){
         Intent intent = new Intent(context,AddMedicineActivity.class);
@@ -37,7 +38,7 @@ public class AddMedicineActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          addMedicineUseCase = getCompositionRoot().getAddMedicineUseCase(this);
-        view = getCompositionRoot().
+         view = getCompositionRoot().
                 getViewMvcFactory().
                 getAddMedicineViewMvc(null,new StringFormsMapper(this));
 

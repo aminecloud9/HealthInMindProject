@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.Set;
 
 import course.labs.healthinmind.common.Form;
+import course.labs.healthinmind.common.Quantity;
 import course.labs.healthinmind.medecine.data.roomimplementation.MedicineRoomImpl;
 import course.labs.healthinmind.reminders.data.abstractions.Reminder;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
@@ -61,6 +62,21 @@ public class TestUtil {
                 new Date(),
                 "instructions"
                 );
+
+    }
+
+    public static MedicineRoomImpl createMedicine(String name, Form form) throws ParseException {
+        return new MedicineRoomImpl(
+                name,
+                250,
+                form,
+                20,
+                false,
+                true,
+                new Date(),
+                new Date(),
+                "instructions"
+        );
 
     }
 

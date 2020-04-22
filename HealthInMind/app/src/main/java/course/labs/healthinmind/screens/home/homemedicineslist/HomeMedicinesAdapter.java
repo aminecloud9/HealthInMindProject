@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import course.labs.healthinmind.medecine.domain.showtodaymedicine.UpcomingMedicine;
 import course.labs.healthinmind.screens.ViewMvcFactory;
 
 public class HomeMedicinesAdapter extends RecyclerView.Adapter<HomeMedicinesAdapter.HomeMedicineViewHolder> {
 
-    private List<HomeMedicineDto> medicines = new ArrayList<>();
+    private List<UpcomingMedicine> medicines = new ArrayList<>();
     private ViewMvcFactory viewMvcFactory;
 
     public HomeMedicinesAdapter(ViewMvcFactory viewMvcFactory) {
@@ -44,12 +45,12 @@ public class HomeMedicinesAdapter extends RecyclerView.Adapter<HomeMedicinesAdap
         return medicines.size();
     }
 
-    public void setMedicines(List<HomeMedicineDto> medicines){
+    public void setMedicines(List<UpcomingMedicine> medicines){
         this.medicines = medicines;
         notifyDataSetChanged();
     }
 
-    public void addMedicine(HomeMedicineDto medicineDto){
+    public void addMedicine(UpcomingMedicine medicineDto){
         medicines.add(medicineDto);
         notifyDataSetChanged();
     }

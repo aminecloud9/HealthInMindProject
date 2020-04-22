@@ -48,7 +48,7 @@ public  class AddReminderDialogWindow extends
     private void setUpTimeChooser() {
         hour = findViewById(R.id.np_reminder_hour);
         minute = findViewById(R.id.np_reminder_minute);
-        hour.setMinValue(0);hour.setMaxValue(11);
+        hour.setMinValue(0);hour.setMaxValue(23);
         minute.setMinValue(0);minute.setMaxValue(59);
     }
 

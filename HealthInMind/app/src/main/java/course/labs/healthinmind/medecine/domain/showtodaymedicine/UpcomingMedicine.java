@@ -1,23 +1,23 @@
-package course.labs.healthinmind.screens.home.homemedicineslist;
+package course.labs.healthinmind.medecine.domain.showtodaymedicine;
 
 import java.time.LocalTime;
 
 import course.labs.healthinmind.common.Form;
 import course.labs.healthinmind.common.Quantity;
 
-public class HomeMedicineDto {
+public class UpcomingMedicine {
 
     public final String medicineName;
     public final int dosage;
     public final Form form;
     public final LocalTime time;
-    public final Quantity quantity;
+    public final Quantity takingQuantity;
 
-    HomeMedicineDto(String medicineName, int dosage, Form form, LocalTime time, Quantity quantity) {
+    public UpcomingMedicine(String medicineName, int dosage, Form form, LocalTime time, Quantity takingQuantity) {
         this.medicineName = medicineName;
         this.dosage = dosage;
         this.form = form;
         this.time = time;
-        this.quantity = quantity;
+        this.takingQuantity = takingQuantity;
     }
 }

@@ -7,12 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.time.LocalTime;
 import java.util.Locale;
 
 import course.labs.healthinmind.R;
-import course.labs.healthinmind.common.Form;
-import course.labs.healthinmind.common.Quantity;
+import course.labs.healthinmind.medecine.domain.showtodaymedicine.UpcomingMedicine;
 import course.labs.healthinmind.screens.ImageFormMapper;
 import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
@@ -29,6 +27,8 @@ public class HomeMedicineViewMvc extends BaseViewMvc {
     public HomeMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent){
         setRootView(layoutInflater.inflate(R.layout.home_medicine_view,parent,false));
         setUpComponents();
+        mapper = new StringQuantityMapper(getContext());
+        formMapper = new ImageFormMapper(getContext());
     }
 
     private void setUpComponents() {
@@ -38,10 +38,10 @@ public class HomeMedicineViewMvc extends BaseViewMvc {
         ivMedicineFormImage = findViewById(R.id.image_home_medicine);
     }
 
-    public void bindMedicine(HomeMedicineDto medicine){
+    public void bindMedicine(UpcomingMedicine medicine){
         tvMedicineTime.setText(medicine.time.toString());
         tvMedicineDescription.setText(String.format(Locale.ENGLISH,"%s %d",medicine.medicineName,medicine.dosage));
-        tvMedicineQuantity.setText(mapper.getString(medicine.quantity));
+        tvMedicineQuantity.setText(mapper.getString(medicine.takingQuantity));
         ivMedicineFormImage.setImageDrawable(formMapper.getImage(medicine.form));
     }
 }

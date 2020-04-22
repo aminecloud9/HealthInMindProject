@@ -8,6 +8,7 @@ import androidx.room.Transaction;
 import java.time.LocalTime;
 import java.util.List;
 
+import course.labs.healthinmind.medecine.domain.showtodaymedicine.UpcomingMedicine;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 import course.labs.healthinmind.remindmedicine.RemindMedicineRoomImpl;
 
@@ -29,4 +30,11 @@ public interface RemindMedicineDao {
     @Transaction
     @Query("SELECT * FROM medicine_table WHERE medicineId = :medicineId")
     MedicineImpl fetchMedicineWithItsReminders(long medicineId);
+
+    @Query("SELECT medicineName,dosage,form,takingQuantity,time FROM " +
+            "medicine_table join remind_medicines " +
+            "ON medicine_table.medicineId = remind_medicines.medicineId JOIN" +
+            " reminders ON remind_medicines.reminderId = reminders.reminderId " +
+            " WHERE reminders.time > :time")
+    List<UpcomingMedicine> getUpcomingMedicines(LocalTime time);
 }
