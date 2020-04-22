@@ -25,20 +25,20 @@ public class Converters {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @TypeConverter
-    public static LocalTime toDate(String timeString) {
-        if (timeString == null) {
+    public static LocalTime toDate(Long nanoOfDay) {
+        if (nanoOfDay == null) {
             return null;
         } else {
-            return LocalTime.parse(timeString);
+            return LocalTime.ofNanoOfDay(nanoOfDay);
         }
     }
 
     @TypeConverter
-    public static String toDateString(LocalTime time) {
+    public static Long toDateString(LocalTime time) {
         if (time == null) {
             return null;
         } else {
-            return time.toString();
+            return time.toNanoOfDay();
         }
     }
 
