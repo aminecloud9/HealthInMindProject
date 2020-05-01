@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/home_fragment"
-    android:label="home_fragment"
-    app:startDestination="@id/homeFragment">
+    android:id="@+id/home"
+    android:label="@string/home"
+    app:startDestination="@id/home_destination">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home_destination"
         android:name="course.labs.healthinmind.screens.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="@string/home" />
+    <fragment
+        android:id="@+id/medicines_destination"
+        android:name="course.labs.healthinmind.screens.medicineslist.MedicinesListFragment"
+        android:label="@string/medicines" >
+        <action
+            android:id="@+id/action_medicines_to_add_medicine"
+            app:destination="@id/add_medicine_destination" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_medicine_destination"
+        android:name="course.labs.healthinmind.screens.addmedicine.AddMedicineFragment"
+        android:label="@string/added_medicine_dosage" />
+    <action
+        android:id="@+id/action_finish_add_medicine"
+        app:destination="@id/medicines_destination" />
+
 </navigation>

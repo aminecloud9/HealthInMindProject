@@ -52,5 +52,5 @@
     <string name="implantsOrPatches">Implants or patches</string>
     <string name="home">Home</string>
     <string name="medicines">Medicines</string>
-
+    <string name="add_medicine">Add a medicine</string>
 </resources>

@@ -5,6 +5,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
+import course.labs.healthinmind.medecine.domain.showmedicineslist.GeneralMedicineDetails;
 import course.labs.healthinmind.screens.addmedicine.AddMedicineViewMvc;
 import course.labs.healthinmind.screens.addmedicine.AddReminderDialogWindow;
 import course.labs.healthinmind.screens.addmedicine.StringFormsMapper;
@@ -14,6 +17,10 @@ import course.labs.healthinmind.screens.home.EmptyListView;
 import course.labs.healthinmind.screens.home.HomeViewImpl;
 import course.labs.healthinmind.screens.home.homemedicineslist.HomeMedicineViewMvc;
 import course.labs.healthinmind.screens.home.homemedicineslist.HomeMedicinesListViewMvc;
+import course.labs.healthinmind.screens.medicineslist.AvailableMedicinesViewMvc;
+import course.labs.healthinmind.screens.medicineslist.medicineslist.GeneralDisplayMedicineDetails;
+import course.labs.healthinmind.screens.medicineslist.medicineslist.MedicinesListViewMvc;
+import course.labs.healthinmind.screens.medicineslist.medicineslist.MedicinesListItemViewMvc;
 
 public class ViewMvcFactory {
 
@@ -50,4 +57,18 @@ public class ViewMvcFactory {
     public HomeViewImpl getHomeView(@Nullable ViewGroup parent){
         return new HomeViewImpl(mLayoutInflater,parent,this);
     }
+
+    public MedicinesListItemViewMvc getMedicinesListItemViewMvc(@Nullable ViewGroup parent) {
+        return new MedicinesListItemViewMvc(mLayoutInflater, parent);
+    }
+
+    public MedicinesListViewMvc getMedicinesList(ViewGroup parent, List<GeneralDisplayMedicineDetails> medicines){
+        return new MedicinesListViewMvc(mLayoutInflater,parent,this,medicines);
+    }
+
+    public AvailableMedicinesViewMvc getAvailableMedicinesViewMvc(@Nullable ViewGroup parent){
+        return new AvailableMedicinesViewMvc(mLayoutInflater,parent,this);
+    }
+
+
 }

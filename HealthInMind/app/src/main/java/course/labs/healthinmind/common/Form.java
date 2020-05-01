@@ -2,7 +2,7 @@ package course.labs.healthinmind.common;
 
 public enum Form {
     PILL("Pill"),
-    LIQUID("LIQUID"),
+    LIQUID("Liquid"),
     TABLET("Tablet"),
     CAPSULES("Capsules"),
     TOPICAL_MEDICINES("Topical Medicines"),

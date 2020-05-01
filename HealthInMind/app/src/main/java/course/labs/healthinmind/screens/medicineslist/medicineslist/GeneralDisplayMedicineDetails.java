@@ -9,15 +9,13 @@ public class GeneralDisplayMedicineDetails {
     public final String medicineName;
     public final int dosage;
     public final Form form;
-    public final Drawable formIcon;
     public final int frequency;
 
-    public GeneralDisplayMedicineDetails(long medicineId, String medicineName, int dosage, Form form, Drawable formIcon, int frequency) {
+    public GeneralDisplayMedicineDetails(long medicineId, String medicineName, int dosage, Form form, int frequency) {
         this.medicineId = medicineId;
         this.medicineName = medicineName;
         this.dosage = dosage;
         this.form = form;
-        this.formIcon = formIcon;
         this.frequency = frequency;
     }
 }

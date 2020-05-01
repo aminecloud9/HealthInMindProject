@@ -3,20 +3,13 @@ package course.labs.healthinmind;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
-import java.util.List;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import course.labs.healthinmind.common.AppExecutors;
-import course.labs.healthinmind.medecine.domain.showtodaymedicine.GetTodayUpcomingMedicines;
-import course.labs.healthinmind.medecine.domain.showtodaymedicine.GetTodayUpcomingMedicinesOutputPort;
-import course.labs.healthinmind.medecine.domain.showtodaymedicine.UpcomingMedicine;
-import course.labs.healthinmind.screens.addmedicine.AddMedicineActivity;
 import course.labs.healthinmind.screens.commons.BaseActivity;
-import course.labs.healthinmind.screens.commons.ScreensNavigator;
-import course.labs.healthinmind.screens.home.HomeFragment;
-import course.labs.healthinmind.screens.home.HomeViewImpl;
 
 public class MainActivity extends BaseActivity {
 
@@ -25,7 +18,13 @@ public class MainActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_container);
+        NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment);
+        setUpBottomNavigation(navController);
+    }
 
+    private void setUpBottomNavigation(NavController navController) {
+        BottomNavigationView navigationView = findViewById(R.id.nav_bottom_menu);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
 

@@ -11,7 +11,7 @@ import java.util.Locale;
 
 import course.labs.healthinmind.R;
 import course.labs.healthinmind.medecine.domain.showtodaymedicine.UpcomingMedicine;
-import course.labs.healthinmind.screens.ImageFormMapper;
+import course.labs.healthinmind.screens.FormIconLoader;
 import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
@@ -22,13 +22,13 @@ public class HomeMedicineViewMvc extends BaseViewMvc {
     private ImageView ivMedicineFormImage;
     private TextView tvMedicineQuantity;
     private StringQuantityMapper mapper;
-    private ImageFormMapper formMapper;
+    private FormIconLoader formIconLoader;
 
     public HomeMedicineViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent){
         setRootView(layoutInflater.inflate(R.layout.home_medicine_view,parent,false));
         setUpComponents();
         mapper = new StringQuantityMapper(getContext());
-        formMapper = new ImageFormMapper(getContext());
+        formIconLoader = new FormIconLoader(getContext());
     }
 
     private void setUpComponents() {
@@ -42,6 +42,6 @@ public class HomeMedicineViewMvc extends BaseViewMvc {
         tvMedicineTime.setText(medicine.time.toString());
         tvMedicineDescription.setText(String.format(Locale.ENGLISH,"%s %d",medicine.medicineName,medicine.dosage));
         tvMedicineQuantity.setText(mapper.getString(medicine.takingQuantity));
-        ivMedicineFormImage.setImageDrawable(formMapper.getImage(medicine.form));
+        formIconLoader.loadFormIcon(medicine.form,ivMedicineFormImage);
     }
 }

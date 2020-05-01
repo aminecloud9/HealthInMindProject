@@ -8,16 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import course.labs.healthinmind.R;
+import course.labs.healthinmind.screens.FormIconLoader;
 import course.labs.healthinmind.screens.views.BaseViewMvc;
 
-public class MedicinesListItem extends BaseViewMvc {
+public class MedicinesListItemViewMvc extends BaseViewMvc {
 
     private ImageView formIcon;
     private TextView medicineName;
     private TextView medicineDosage;
     private TextView medicineFrequency;
+    private FormIconLoader formIconLoader;
 
-    public MedicinesListItem(LayoutInflater layoutInflater, @Nullable ViewGroup parent){
+    public MedicinesListItemViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent){
+        this.formIconLoader = new FormIconLoader(getContext());
         setRootView(layoutInflater.inflate(R.layout.medicines_medicine_view,parent,false));
         formIcon = findViewById(R.id.medicines_medicine_image);
         medicineName = findViewById(R.id.medicine_name);
@@ -29,5 +32,7 @@ public class MedicinesListItem extends BaseViewMvc {
         medicineName.setText(medicine.medicineName);
         medicineDosage.setText(String.valueOf(medicine.dosage));
         medicineFrequency.setText(String.valueOf(medicine.frequency));
+        formIconLoader.loadFormIcon(medicine.form,formIcon);
+
     }
 }

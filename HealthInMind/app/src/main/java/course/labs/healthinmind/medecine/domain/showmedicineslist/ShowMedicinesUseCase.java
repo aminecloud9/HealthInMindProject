@@ -12,6 +12,8 @@ public class ShowMedicinesUseCase {
         void handleNoMedicines();
     }
 
+    ShowMedicinesUseCaseOutputPort outputPort;
+
     private MedicineRepository repository;
 
     public ShowMedicinesUseCase(MedicineRepository repository) {
@@ -19,6 +21,11 @@ public class ShowMedicinesUseCase {
     }
 
     public void showMedicines(){
-
+        outputPort.handleNoMedicines();
     }
+
+    public void registerOutputPort(ShowMedicinesUseCaseOutputPort outputPort){
+        this.outputPort = outputPort;
+    }
+
 }

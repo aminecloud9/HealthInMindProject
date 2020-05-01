@@ -80,6 +80,8 @@ public class Converters {
         switch (form){
             case "Pill" : return Form.PILL;
             case "Liquid" : return Form.LIQUID;
+            case "Injections" : return Form.INJECTIONS;
+            case "Tablet" : return Form.TABLET;
             default: return null;
         }
     }
