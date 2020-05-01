@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import course.labs.healthinmind.common.dependencyinjection.Builders.displaybuilders.GeneralDisplayMedicineDetailsBuilder;
+import course.labs.healthinmind.common.dependencyinjection.Builders.displaybuilders.GeneralDisplayMedicineDetailsBuilderIml;
 import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineBuilder;
 import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineRoomImplBuilder;
 import course.labs.healthinmind.medecine.domain.addmedicineusecase.AddMedicineUseCase;
 import course.labs.healthinmind.medecine.domain.ShowMedicineDetailsUseCase;
 import course.labs.healthinmind.medecine.domain.showtodaymedicine.GetTodayUpcomingMedicines;
 import course.labs.healthinmind.medecine.domain.showtodaymedicine.GetTodayUpcomingMedicinesOutputPort;
+import course.labs.healthinmind.screens.ImageFormMapper;
 import course.labs.healthinmind.screens.addmedicine.AddReminderDialogController;
 import course.labs.healthinmind.screens.ViewMvcFactory;
 import course.labs.healthinmind.screens.addmedicine.reminders.StringQuantityMapper;
@@ -22,6 +25,10 @@ public class ControllerCompositionRoot {
 
     private final CompositionRoot mCompositionRoot;
     private final FragmentActivity mActivity;
+
+    private ImageFormMapper imageFormMapper;
+    private StringQuantityMapper stringQuantityMapper;
+    private ViewMvcFactory viewMvcFactory;
 
     public ControllerCompositionRoot(CompositionRoot compositionRoot, FragmentActivity activity) {
         mCompositionRoot = compositionRoot;
@@ -41,7 +48,11 @@ public class ControllerCompositionRoot {
     }
 
     public ViewMvcFactory getViewMvcFactory() {
-        return new ViewMvcFactory(getLayoutInflater());
+
+        if(viewMvcFactory == null){
+            viewMvcFactory = new ViewMvcFactory(getLayoutInflater());
+        }
+        return viewMvcFactory;
     }
 
     private FragmentActivity getActivity() {
@@ -67,7 +78,11 @@ public class ControllerCompositionRoot {
     }
 
     private StringQuantityMapper getStringQuantityMapper(){
-        return new StringQuantityMapper(getContext());
+
+        if(stringQuantityMapper == null){
+            stringQuantityMapper = new StringQuantityMapper(getContext());
+        }
+        return stringQuantityMapper;
     }
 
     public AddReminderDialogController getAddReminderDialogController(){
@@ -80,5 +95,16 @@ public class ControllerCompositionRoot {
 
     public GetTodayUpcomingMedicines getTodayUpcomingMedicinesUseCase(GetTodayUpcomingMedicinesOutputPort outputPort){
         return new GetTodayUpcomingMedicines(outputPort,mCompositionRoot.getRemindMedicinesRepository());
+    }
+
+    public GeneralDisplayMedicineDetailsBuilder generalDisplayMedicineDetailsBuilder(){
+        return new GeneralDisplayMedicineDetailsBuilderIml(getImageFormMapper());
+    }
+
+    private ImageFormMapper getImageFormMapper() {
+        if(imageFormMapper == null){
+            imageFormMapper = new ImageFormMapper(getContext());
+        }
+        return imageFormMapper;
     }
 }

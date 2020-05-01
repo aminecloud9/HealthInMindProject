@@ -4,5 +4,4 @@ import course.labs.healthinmind.screens.commons.BaseFragment;
 
 public class MedicinesListFragment extends BaseFragment {
 
-
 }

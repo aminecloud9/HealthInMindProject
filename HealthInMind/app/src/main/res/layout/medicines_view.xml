@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/medicines_medicines_recycler"
+        android:id="@+id/medicines_list_container"
         tools:listitem="@layout/medicines_medicine_view"/>
 
 
