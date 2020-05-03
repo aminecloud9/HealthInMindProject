@@ -14,6 +14,7 @@ import androidx.annotation.UiThread;
 import java.util.Date;
 import java.util.List;
 
+import course.labs.healthinmind.common.AppExecutors;
 import course.labs.healthinmind.common.Form;
 import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineBuilder;
 import course.labs.healthinmind.common.dependencyinjection.Builders.medicinebuilders.MedicineCreationException;
@@ -111,7 +112,13 @@ public class AddMedicineFragment extends BaseFragment implements AddMedicine.Add
     @UiThread
     @Override
     public void onSuccess(AddMedicineResponse response) {
-        Toast.makeText(getContext(),"Medicine Added successfully",Toast.LENGTH_SHORT).show();
+        AppExecutors
+                .getInstance()
+                .mainThread()
+                .execute(
+                        () -> Toast.makeText(getContext(),"Medicine Added successfully",Toast.LENGTH_SHORT).show()
+                );
+
     }
 
     @Override
@@ -121,7 +128,7 @@ public class AddMedicineFragment extends BaseFragment implements AddMedicine.Add
     @UiThread
     @Override
     public void onFailure(AddMedicineResponse response) {
-        Toast.makeText(getContext(),"An error accrued when adding medicine",Toast.LENGTH_SHORT).show();
+        AppExecutors.getInstance().mainThread().execute(() -> Toast.makeText(getContext(),"An error accrued when adding medicine",Toast.LENGTH_SHORT).show());
     }
 
 }

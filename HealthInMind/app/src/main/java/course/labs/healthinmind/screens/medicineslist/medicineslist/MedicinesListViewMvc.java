@@ -27,7 +27,7 @@ public class MedicinesListViewMvc extends BaseObservableViewMvc {
 
     public MedicinesListViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory, List<GeneralDisplayMedicineDetails> medicines){
         this.viewMvcFactory = viewMvcFactory;
-        setRootView(layoutInflater.inflate(R.layout.items_list,parent,false));
+        setRootView(layoutInflater.inflate(R.layout.items_list,parent,true));
         setUpRecyclerView(medicines);
     }
 

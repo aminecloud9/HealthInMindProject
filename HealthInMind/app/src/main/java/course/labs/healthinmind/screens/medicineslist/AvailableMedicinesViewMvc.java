@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import course.labs.healthinmind.R;
+import course.labs.healthinmind.common.AppExecutors;
 import course.labs.healthinmind.screens.ViewMvcFactory;
 import course.labs.healthinmind.screens.home.EmptyListView;
 import course.labs.healthinmind.screens.medicineslist.medicineslist.GeneralDisplayMedicineDetails;
@@ -48,15 +49,25 @@ public class AvailableMedicinesViewMvc extends BaseObservableViewMvc<AvailableMe
 
     @UiThread
     public void showMedicinesList(List<GeneralDisplayMedicineDetails> medicines){
-        flMedicinesContainer.removeAllViews();
-        MedicinesListViewMvc medicinesListViewMvc = factory.getMedicinesList(flMedicinesContainer, medicines);
-        flMedicinesContainer.addView(medicinesListViewMvc.getRootView());
+        AppExecutors.getInstance().mainThread().execute(
+                () -> {
+                    flMedicinesContainer.removeAllViews();
+                    MedicinesListViewMvc medicinesListViewMvc = factory.getMedicinesList(flMedicinesContainer, medicines);
+                    flMedicinesContainer.addView(medicinesListViewMvc.getRootView());
+                }
+        );
+
     }
 
     @UiThread
     public void showEmptyMedicinesList(){
-        flMedicinesContainer.removeAllViews();
-        EmptyListView emptyListView = factory.getEmptyListView(flMedicinesContainer,getString(R.string.no_medicines));
-        flMedicinesContainer.addView(emptyListView.getRootView());
+        AppExecutors.getInstance().mainThread().execute(
+                () -> {
+                    flMedicinesContainer.removeAllViews();
+                    EmptyListView emptyListView = factory.getEmptyListView(flMedicinesContainer,getString(R.string.no_medicines));
+                    flMedicinesContainer.addView(emptyListView.getRootView());
+                }
+        );
+
     }
 }

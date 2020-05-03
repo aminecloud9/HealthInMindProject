@@ -21,7 +21,13 @@ public class ShowMedicinesUseCase {
     }
 
     public void showMedicines(){
-        outputPort.handleNoMedicines();
+        List<GeneralMedicineDetails> medicines = repository.getGeneralMedicinesDetailsList();
+        if(medicines.isEmpty()){
+            outputPort.handleNoMedicines();
+        }else {
+            outputPort.showMedicinesList(medicines);
+        }
+
     }
 
     public void registerOutputPort(ShowMedicinesUseCaseOutputPort outputPort){

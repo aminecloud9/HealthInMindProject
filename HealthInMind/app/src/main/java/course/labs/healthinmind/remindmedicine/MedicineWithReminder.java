@@ -14,9 +14,9 @@ import course.labs.healthinmind.remindmedicine.RemindMedicineRoomImpl;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.reminders.data.roomimplimentation.ReminderRoomImpl;
 
-public class MedicineImpl{
+public class MedicineWithReminder {
 
-    public MedicineImpl(MedicineRoomImpl medicine, List<ReminderRoomImpl> reminders) {
+    public MedicineWithReminder(MedicineRoomImpl medicine, List<ReminderRoomImpl> reminders) {
         this.medicine = medicine;
         this.reminders = reminders;
     }

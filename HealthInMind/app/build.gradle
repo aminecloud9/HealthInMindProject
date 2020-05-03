@@ -55,7 +55,7 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-storage:19.1.1'
-    implementation 'com.google.firebase:firebase-database:19.2.1'
+    implementation 'com.google.firebase:firebase-database:19.3.0'
 
     //Navigation
     def nav_version = "2.3.0-alpha06"
@@ -66,7 +66,7 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.7.15'
+    testImplementation 'org.mockito:mockito-core:3.3.3'
     androidTestImplementation "org.mockito:mockito-android:3.3.3"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

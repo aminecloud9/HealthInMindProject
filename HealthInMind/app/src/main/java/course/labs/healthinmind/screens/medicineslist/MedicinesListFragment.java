@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import course.labs.healthinmind.common.AppExecutors;
 import course.labs.healthinmind.common.dependencyinjection.Builders.displaybuilders.GeneralDisplayMedicineDetailsBuilder;
 import course.labs.healthinmind.medecine.domain.showmedicineslist.GeneralMedicineDetails;
 import course.labs.healthinmind.medecine.domain.showmedicineslist.ShowMedicinesUseCase;
@@ -39,7 +40,10 @@ public class MedicinesListFragment extends BaseFragment
         super.onStart();
         availableMedicinesViewMvc.registerListener(this);
         showMedicinesUseCase.registerOutputPort(this);
-        showMedicinesUseCase.showMedicines();
+        AppExecutors.getInstance().diskIO().execute(
+                () ->   showMedicinesUseCase.showMedicines()
+
+        );
     }
 
     @Override

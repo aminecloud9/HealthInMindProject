@@ -5,6 +5,8 @@ import java.util.List;
 import course.labs.healthinmind.medecine.data.abstractions.Medicine;
 import course.labs.healthinmind.medecine.data.abstractions.MedicineRepository;
 import course.labs.healthinmind.medecine.data.abstractions.MedicinesLocalProvider;
+import course.labs.healthinmind.medecine.domain.showmedicineslist.GeneralMedicineDetails;
+import course.labs.healthinmind.screens.medicineslist.medicineslist.GeneralDisplayMedicineDetails;
 
 public class MedicineRepositoryImpl implements MedicineRepository {
     private MedicinesLocalProvider medicinesLocalProvider;
@@ -31,6 +33,11 @@ public class MedicineRepositoryImpl implements MedicineRepository {
     @Override
     public void deleteMedicine(int id) {
         medicinesLocalProvider.deleteMedicine(id);
+    }
+
+    @Override
+    public List<GeneralMedicineDetails> getGeneralMedicinesDetailsList() {
+        return medicinesLocalProvider.getGeneralMedicinesDetailsList();
     }
 
     @Override

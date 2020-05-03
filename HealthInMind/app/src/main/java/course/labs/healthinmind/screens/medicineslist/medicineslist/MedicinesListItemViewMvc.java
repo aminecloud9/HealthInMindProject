@@ -20,12 +20,12 @@ public class MedicinesListItemViewMvc extends BaseViewMvc {
     private FormIconLoader formIconLoader;
 
     public MedicinesListItemViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent){
-        this.formIconLoader = new FormIconLoader(getContext());
         setRootView(layoutInflater.inflate(R.layout.medicines_medicine_view,parent,false));
         formIcon = findViewById(R.id.medicines_medicine_image);
         medicineName = findViewById(R.id.medicine_name);
         medicineDosage = findViewById(R.id.medicine_dosage);
         medicineFrequency = findViewById(R.id.medicine_frequency);
+        this.formIconLoader = new FormIconLoader(getContext());
     }
 
     public void bindMedicine(GeneralDisplayMedicineDetails medicine){

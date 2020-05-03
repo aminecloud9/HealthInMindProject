@@ -2,6 +2,8 @@ package course.labs.healthinmind.medecine.data.abstractions;
 
 import java.util.List;
 
+import course.labs.healthinmind.medecine.domain.showmedicineslist.GeneralMedicineDetails;
+
 public interface MedicinesLocalProvider {
     Medicine getMedicine(long id);
     Long createMedicine(Medicine medicine);
@@ -9,4 +11,6 @@ public interface MedicinesLocalProvider {
     void deleteMedicine(int id);
 
     List<Medicine> showExistantMedicines();
+
+    List<GeneralMedicineDetails> getGeneralMedicinesDetailsList();
 }

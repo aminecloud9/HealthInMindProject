@@ -8,7 +8,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import course.labs.healthinmind.remindmedicine.MedicineImpl;
+import course.labs.healthinmind.remindmedicine.MedicineWithReminder;
 
 @Dao
 public interface MedicineDao {
@@ -30,4 +30,8 @@ public interface MedicineDao {
 
     @Query("SELECT * from medicine_table")
     List<MedicineRoomImpl> getAllMedcines();
+
+    @Transaction
+    @Query("SELECT * FROM medicine_table")
+    List<MedicineWithReminder> fetchMedicinesWithReminders();
 }
